@@ -1,6 +1,6 @@
 package main.homework.june24Year23;
 
-public class methodSwap {
+public class methodSwapTask1_1 {
     public static void swap(int x, int y) {
         int buffer = x;
         x = y;
