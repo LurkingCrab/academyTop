@@ -5,12 +5,12 @@ public class methodSwap {
         int buffer = x;
         x = y;
         y = buffer;
-        System.out.printf("Метод swap:\nx = %s\ny = %s\n", x, y);
+        System.out.printf("Метод swap:\nx = %s\ny = %s", x, y);
     }
 
     public static void compute(int x, int y) {
         x = x + y - (y = x);
-        System.out.printf("Метод compute:\nx = %s\ny = %s\n", x, y);
+        System.out.printf("\nМетод compute:x = %s\ny = %s\n", x, y);
     }
 
     private static void computeBitOperation(int x, int y){
