@@ -8,16 +8,51 @@ public class scannerUsingTas1_2 {
 
     public static void main(String[] args) {
         // 1. Запросите у пользователя его имя и выведите в ответ: «Привет, его имя!».
-        System.out.println("Введите имя пользователя");
-        String name = new Scanner(System.in).next();
-        System.out.printf("Привет, %s\n", name);
+        isPrintAGreeting();
 
         //2. Запросите у пользователя год его рождения, посчитайте, сколько ему лет и выведите результат. Текущий год
         // укажите в коде как константу.
-        System.out.println("Введите год рождения");
+        isCalculatesAge();
+
+        //3. Запросите у пользователя длину стороны квадрата и выведите периметр такого квадрата.
+        isCalculatesThePerimeterOfASquare();
+
+        //4. Запросите у пользователя радиус окружности и выведите площадь такой окружности.
+        isCalculatesAreaOfACircle();
+
+        //5. Запросите у пользователя расстояние в км между двумя городами и за сколько часов он хочет добраться.
+        // Посчитайте скорость, с которой необходимо двигаться, чтобы успеть вовремя.
+        System.out.print("Введите данные:\nРасстояние между городами (км) = ");
+        double distanceBetweenCities = new Scanner(System.in).nextDouble();
+        System.out.print("\nЗа сколько часов вы хотите добраться? - ");
+        int hour = new Scanner(System.in).nextInt();
+
+}
+
+    private static void isCalculatesAreaOfACircle() {
+        System.out.println("Введите радиус окружности (принимаются как вещественные, используйте запятую, так и целые числа):");
+        double radius = new Scanner(System.in).nextDouble();
+        double areaOfACircle = Math.PI * (radius * radius);
+        System.out.printf("Площадь круга равна %.2f\n", areaOfACircle);
+    }
+
+    private static void isCalculatesThePerimeterOfASquare() {
+        System.out.println("Введите длину стороны квадрата (целое число):");
+        int sideLengthOfASquare = new Scanner(System.in).nextInt();
+        int perimeter = 4 * sideLengthOfASquare;
+        System.out.printf("Периметр квадрата равен %s\n", perimeter);
+    }
+
+    private static void isCalculatesAge() {
+        System.out.println("Введите год рождения:");
         int dateOfBirth = new Scanner(System.in).nextInt();
         int age = YEAR - dateOfBirth;
-        System.out.printf("Ваш возвраcт - %s\n", age);
+        System.out.printf("Ваш возраcт - %s\n", age);
+    }
 
+    private static void isPrintAGreeting() {
+        System.out.println("Введите имя пользователя:");
+        String name = new Scanner(System.in).next();
+        System.out.printf("Привет, %s\n", name);
     }
 }
