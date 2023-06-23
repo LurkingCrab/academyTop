@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class scannerUsingTas1_2 {
     private static final int YEAR = 2023;
+    private static final double EURO_EXCHANGE_RATE = 0.92;
+
 
     public static void main(String[] args) {
         // 1. Запросите у пользователя его имя и выведите в ответ: «Привет, его имя!».
@@ -22,12 +24,27 @@ public class scannerUsingTas1_2 {
 
         //5. Запросите у пользователя расстояние в км между двумя городами и за сколько часов он хочет добраться.
         // Посчитайте скорость, с которой необходимо двигаться, чтобы успеть вовремя.
+        isCalculatesSpeed();
+
+        //6. Реализуйте конвертор валют. Пользователь вводит доллары, программа переводит в евро. Курс валюты храните в константе.
+        isCurrencyConversion();
+    }
+
+    private static void isCurrencyConversion() {
+        System.out.print("Конвертируем $ в €\n$ = ");
+        double dollar = new Scanner(System.in).nextDouble();
+        double convertation = dollar * EURO_EXCHANGE_RATE;
+        System.out.printf("€ = %.2f", convertation);
+    }
+
+    private static void isCalculatesSpeed() {
         System.out.print("Введите данные:\nРасстояние между городами (км) = ");
         double distanceBetweenCities = new Scanner(System.in).nextDouble();
-        System.out.print("\nЗа сколько часов вы хотите добраться? - ");
+        System.out.print("За сколько часов вы хотите добраться? - ");
         int hour = new Scanner(System.in).nextInt();
-
-}
+        double yourSpeed = distanceBetweenCities / hour;
+        System.out.printf("Вам надо ехать со скорость %.2f км\\ч что бы успеть во время\n", yourSpeed);
+    }
 
     private static void isCalculatesAreaOfACircle() {
         System.out.println("Введите радиус окружности (принимаются как вещественные, используйте запятую, так и целые числа):");
