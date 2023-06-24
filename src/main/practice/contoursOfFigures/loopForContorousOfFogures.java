@@ -30,16 +30,20 @@ public class loopForContorousOfFogures {
             System.out.println();
         }
 
-        //Перевернутый контурный правосторонний прямоугольный треугольник
-        for (int i = 1; i <= figureSize; i++) {
+        //Перевернутый контурный прямоугольный треугольник
+        for (int i = figureSize; i >= 1; i--) {
             for (int j = 1; j <= i; j++) {
-                if (i == figureSize || j == 1 || j == i) {
-                    System.out.print('*');
-                } else {
-                    System.out.print(' ');
+                {
+                    if (i == figureSize || j == 1 || j == i) {
+                        System.out.print('*');
+                    } else {
+                        System.out.print(' ');
+                    }
                 }
             }
             System.out.println();
         }
+
+        // Полый квадрат
     }
 }
