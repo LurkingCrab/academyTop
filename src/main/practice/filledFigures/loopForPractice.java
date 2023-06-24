@@ -2,14 +2,12 @@ package main.practice.filledFigures;
 
 public class loopForPractice {
     public static void main(String[] args) {
-        // прямоугольный треугольник, левосторонний
-        for (int count = 0; count < 10; count++) {
-            int starCount = 1 + count;
-            for (int j = 0; j < starCount; j++)
+        // прямоугольный треугольник
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < i; j++)
                 System.out.print("*");
             System.out.println();
         }
-        System.out.println();
         // прямоугольный треугольник, перевернутый
         for (int i = 0; i < 10; i++) {
             int starCount = 10 - i;
