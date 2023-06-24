@@ -1,4 +1,4 @@
-package main.practice.filledTriangles;
+package main.practice.filledFigures;
 
 public class loopForPractice {
     public static void main(String[] args) {
@@ -21,8 +21,8 @@ public class loopForPractice {
         }
 
         //Равнобедренный треугольник
-        for (int i = 0; i<=6; i++) {
-            for (int j =1; j<=6-i; j++) {
+        for (int i = 0; i<=14; i++) {
+            for (int j =1; j<=14-i; j++) {
                 System.out.print(" ");
             }
             for (int k = 1; k<=2*i-1; k++) {
@@ -30,6 +30,18 @@ public class loopForPractice {
             }
             System.out.println();
         }
-
+        // Квадрат
+        System.out.println();
+        int countI = 4;
+        int countJ = 8;
+        // Внешний цикл
+        for(int i=0; i < countI; i++) {
+            // Внутренний цикл для печати одной строки
+            for(int k=0; k < countJ; k++) {
+                System.out.print("*");
+            }
+            // Переход на следующую строку
+            System.out.println();
+        }
     }
 }
