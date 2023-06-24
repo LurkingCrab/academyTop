@@ -45,5 +45,17 @@ public class loopForContorousOfFogures {
         }
 
         // Полый квадрат
+        int countI = 4;
+        int countJ = 8;
+        for (int i = 0; i < countI; i++) {
+            for (int j = 0; j < countJ; j++) {
+                if (i == 0 || i == countI - 1 || j == 0 || j == countJ - 1) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println(" ");
+        }
     }
 }
