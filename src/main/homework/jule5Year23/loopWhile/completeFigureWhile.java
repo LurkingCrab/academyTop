@@ -1,32 +1,29 @@
 package main.homework.jule5Year23.loopWhile;
 
 public class completeFigureWhile {
-    public static int figureSize = 10;
-    public static int countSpace = 0;
-
     public static void main(String[] args) {
         // прямоугольный треугольник
-//        rightTriangle();
+        rightTriangle(0, 10);
 
         System.out.println();
 
         //перевернутый прямоугольный треугольник
-        invertedRightTriangle();
+        invertedRightTriangle(0, 10);
     }
 
-    private static void rightTriangle() {
+    private static void rightTriangle(int countSpace, int figureSize) {
         while (countSpace < figureSize) {
             int countCharacter = 0;
             while (countCharacter < countSpace) {
                 System.out.print("*");
                 countCharacter++;
             }
-            System.out.println(" ");
+            System.out.println();
             countSpace++;
         }
     }
 
-    private static void invertedRightTriangle() {
+    private static void invertedRightTriangle(int countSpace, int figureSize) {
         while (countSpace < figureSize){
             int countCharacter = figureSize - countSpace;
             int startCount = 0;
@@ -34,7 +31,7 @@ public class completeFigureWhile {
                 System.out.print("*");
                 startCount++;
             }
-            System.out.println(" ");
+            System.out.println();
             countSpace++;
         }
     }
