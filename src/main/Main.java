@@ -2,7 +2,8 @@ package main;
 
 public class Main {
     public static void main(String[] args) {
-        while (true){
-        System.out.println("Hello world! hello Java");}
+        System.out.println("привте " + (12-10));
+
     }
+
 }
