@@ -16,6 +16,7 @@ public class loopForContorousOfFogures {
                 }
             }
             System.out.println();
+
         }
 
         //Контурный правосторонний прямоугольный треугольник
