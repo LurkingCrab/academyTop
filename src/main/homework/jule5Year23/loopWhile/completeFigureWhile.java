@@ -14,9 +14,9 @@ public class completeFigureWhile {
     private static void rightTriangle(int countSpace, int figureSize) {
         while (countSpace < figureSize) {
             int countCharacter = 0;
-            while (countCharacter < countSpace) {
-                System.out.print("*");
+            while (countCharacter <= countSpace) {
                 countCharacter++;
+                System.out.print("*");
             }
             System.out.println();
             countSpace++;
@@ -24,10 +24,10 @@ public class completeFigureWhile {
     }
 
     private static void invertedRightTriangle(int countSpace, int figureSize) {
-        while (countSpace < figureSize){
+        while (countSpace < figureSize) {
             int countCharacter = figureSize - countSpace;
             int startCount = 0;
-            while (startCount < countCharacter){
+            while (startCount < countCharacter) {
                 System.out.print("*");
                 startCount++;
             }
