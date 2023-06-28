@@ -5,24 +5,38 @@ import java.util.Scanner;
 public class CompleteFigureWhile {
 
     public static void main(String[] args) {
-        System.out.println("Введите размер фигуры\n");
-        int figureSize = new Scanner(System.in).nextInt();
-
-        // прямоугольный треугольник
-        getRightTriangle(figureSize);
-
-        System.out.println();
-
-        //перевернутый прямоугольный треугольник
-        getInvertedRightTriangle(figureSize);
-
-        System.out.println();
-
-        //Равнобедренный треугольник
-        getIsoscelesTriangle(figureSize);
-
-        //не квадратный квадрат
-        getQuadrant(5, 4);
+        System.out.println("""
+                Выберите фигуру которые хотите получить.
+                1 - Прямоугольный треугольник
+                2 - Перевернутый прямоугольный треугольник
+                3 - Равнобедренный треугольник
+                4 - Квадрат
+                """);
+        int num = new Scanner(System.in).nextInt();
+        switch (num) {
+            case 1 -> {
+                System.out.println("Введите размер фигуры\n");
+                int figureSize = new Scanner(System.in).nextInt();
+                getRightTriangle(figureSize);
+            }
+            case 2 -> {
+                System.out.println("Введите размер фигуры\n");
+                int figureSize1 = new Scanner(System.in).nextInt();
+                getInvertedRightTriangle(figureSize1);
+            }
+            case 3 -> {
+                System.out.println("Введите размер фигуры\n");
+                int figureSize2 = new Scanner(System.in).nextInt();
+                getIsoscelesTriangle(figureSize2);
+            }
+            case 4 -> {
+                System.out.print("Ведите размеры квадрата.\n a = ");
+                int xAxis = new Scanner(System.in).nextInt();
+                System.out.println("b = ");
+                int yAxis = new Scanner(System.in).nextInt();
+                getQuadrant(xAxis, yAxis);
+            }
+        }
     }
 
     private static void getRightTriangle(int figureSize) {
