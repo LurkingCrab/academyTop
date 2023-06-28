@@ -3,26 +3,30 @@ package main.homework.jule_5_year_23.complete_figure.loop_while;
 import java.util.Scanner;
 
 public class CompleteFigureWhile {
+
     public static void main(String[] args) {
+        System.out.println("Введите размер фигуры\n");
+        int figureSize = new Scanner(System.in).nextInt();
 
-//        // прямоугольный треугольник
-//        getRightTriangle(0, 10);
-//
-//        System.out.println();
-//
-//        //перевернутый прямоугольный треугольник
-//        getInvertedRightTriangle(0, 10);
-//
-//        System.out.println();
-//
-//        //Равнобедренный треугольник
-//        getIsoscelesTriangle(0, 10);
+        // прямоугольный треугольник
+        getRightTriangle(figureSize);
 
-        // не квадратный квадрат
+        System.out.println();
+
+        //перевернутый прямоугольный треугольник
+        getInvertedRightTriangle(figureSize);
+
+        System.out.println();
+
+        //Равнобедренный треугольник
+        getIsoscelesTriangle(figureSize);
+
+        //не квадратный квадрат
         getQuadrant(5, 4);
     }
 
-    private static void getRightTriangle(int countSpace, int figureSize) {
+    private static void getRightTriangle(int figureSize) {
+        int countSpace = 0;
         while (countSpace < figureSize) {
             int countCharacter = 0;
             while (countCharacter <= countSpace) {
@@ -34,7 +38,8 @@ public class CompleteFigureWhile {
         }
     }
 
-    private static void getInvertedRightTriangle(int countSpace, int figureSize) {
+    private static void getInvertedRightTriangle(int figureSize) {
+        int countSpace = 0;
         while (countSpace < figureSize) {
             int countCharacter = figureSize - countSpace;
             int startCount = 0;
@@ -47,7 +52,8 @@ public class CompleteFigureWhile {
         }
     }
 
-    private static void getIsoscelesTriangle(int countNewString, int figureSize) {
+    private static void getIsoscelesTriangle(int figureSize) {
+        int countNewString = 0;
         while (countNewString <= figureSize) {
             int countCharacterSpace = 0;
             while (countCharacterSpace <= figureSize - countNewString) {
