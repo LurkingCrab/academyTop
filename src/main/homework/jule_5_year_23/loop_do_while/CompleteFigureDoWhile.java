@@ -1,8 +1,6 @@
-package main.homework.jule5Year23.loopDoWhile;
+package main.homework.jule_5_year_23.loop_do_while;
 
-import static main.homework.jule5Year23.loopWhile.completeFigureWhile.*;
-
-public class completeFigureDoWhile {
+public class CompleteFigureDoWhile {
     public static void main(String[] args) {
         //Полный прямоугольный треугольник
         int countSpace = 0;

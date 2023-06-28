@@ -1,6 +1,6 @@
-package main.practice.filledFigures;
+package main.practice.filled_figures;
 
-public class loopForPractice {
+public class LoopForPractice {
     public static void main(String[] args) {
         // прямоугольный треугольник
         for (int i = 0; i < 10; i++) {
@@ -18,8 +18,8 @@ public class loopForPractice {
         }
 
         //Равнобедренный треугольник
-        for (int i = 0; i <= 14; i++) {
-            for (int j = 1; j <= 14 - i; j++) {
+        for (int i = 0; i <= 9; i++) {
+            for (int j = 0; j <= 9 - i; j++) {
                 System.out.print(" ");
             }
             for (int k = 1; k <= 2 * i - 1; k++) {

@@ -1,6 +1,6 @@
-package main.practice.diagonalLines;
+package main.practice.diagonal_lines;
 
-public class loopForDiagonalLines {
+public class LoopForDiagonalLines {
     public static void main(String[] args) {
         //диагональ в право
         int figureSize = 14;

@@ -1,4 +1,4 @@
-package main.homework.june24Year23;
+package main.homework.june_24_year_23;
 
 public class methodSwapTask1_1 {
     public static void swap(int x, int y) {

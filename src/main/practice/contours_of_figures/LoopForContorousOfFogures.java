@@ -1,6 +1,6 @@
-package main.practice.contoursOfFigures;
+package main.practice.contours_of_figures;
 
-public class loopForContorousOfFogures {
+public class LoopForContorousOfFogures {
     public static void main(String[] args) {
         // Контурный равнобедренный треугольник
         int figureSize = 14;
