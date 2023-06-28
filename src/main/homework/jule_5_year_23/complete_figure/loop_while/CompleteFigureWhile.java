@@ -30,7 +30,7 @@ public class CompleteFigureWhile {
                 getIsoscelesTriangle(figureSize2);
             }
             case 4 -> {
-                System.out.print("Ведите размеры квадрата.\n a = ");
+                System.out.print("Ведите размеры квадрата.\na = ");
                 int xAxis = new Scanner(System.in).nextInt();
                 System.out.println("b = ");
                 int yAxis = new Scanner(System.in).nextInt();
