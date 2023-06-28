@@ -88,7 +88,7 @@ public class CompleteFigureWhile {
                     System.out.println(" ");
                     contourCounter++;
                 }
-                return;
+                break;
             }
         }
     }
