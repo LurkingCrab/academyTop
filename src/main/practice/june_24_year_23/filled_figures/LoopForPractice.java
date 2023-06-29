@@ -1,4 +1,4 @@
-package main.practice.filled_figures;
+package main.practice.june_24_year_23.filled_figures;
 
 public class LoopForPractice {
     public static void main(String[] args) {

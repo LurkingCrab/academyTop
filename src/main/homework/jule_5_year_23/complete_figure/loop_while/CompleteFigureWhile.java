@@ -11,6 +11,8 @@ public class CompleteFigureWhile {
                 2 - Перевернутый прямоугольный треугольник
                 3 - Равнобедренный треугольник
                 4 - Квадрат
+                5 - Диагональ в правую сторону
+                6 - Диагональ в левую сторону
                 """);
         int num = new Scanner(System.in).nextInt();
         switch (num) {
@@ -35,6 +37,16 @@ public class CompleteFigureWhile {
                 System.out.println("b = ");
                 int yAxis = new Scanner(System.in).nextInt();
                 getQuadrant(xAxis, yAxis);
+            }
+            case  5 -> {
+                System.out.println("Введите размер фигуры\n");
+                int figureSize3 = new Scanner(System.in).nextInt();
+                getDiagonalLineRight(figureSize3);
+            }
+            case 6 -> {
+                System.out.println("Введите размер фигуры\n");
+                int figureSize4 = new Scanner(System.in).nextInt();
+                getDiagonalLineLeft(figureSize4);
             }
         }
     }
@@ -110,6 +122,40 @@ public class CompleteFigureWhile {
                 }
                 break;
             }
+        }
+    }
+
+    private static void getDiagonalLineRight (int figureSize){
+        int countSpace = 0;
+        while (countSpace <= figureSize) {
+            int startCount = 0;
+            while (startCount <= countSpace) {
+                if(startCount == countSpace){
+                    System.out.print('*');
+                } else {
+                    System.out.print(' ');
+                }
+                startCount++;
+            }
+            System.out.println();
+            countSpace++;
+        }
+    }
+
+    private static void getDiagonalLineLeft(int figureSize){
+        int countSpace = figureSize;
+        while (countSpace >= 1){
+            int startCount = 0;
+            while (startCount <= countSpace) {
+                if (startCount == countSpace) {
+                    System.out.print('*');
+                } else {
+                    System.out.print(' ');
+                }
+                startCount++;
+            }
+            System.out.println();
+            countSpace--;
         }
     }
 }
