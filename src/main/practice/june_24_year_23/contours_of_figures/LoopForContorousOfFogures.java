@@ -9,7 +9,7 @@ public class LoopForContorousOfFogures {
                 System.out.print(" ");
             }
             for (int k = 1; k < 2 * i - 1; k++) {
-                if (i == 1 || i == figureSize || k == 2 * i - 2) {
+                if (i == 1 || i == figureSize || k == 0 || k == 2 * i - 2) {
                     System.out.print("*");
                 } else {
                     System.out.print(" ");
