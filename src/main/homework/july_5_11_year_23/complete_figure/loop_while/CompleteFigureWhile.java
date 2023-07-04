@@ -1,4 +1,4 @@
-package main.homework.jule_5_year_23.complete_figure.loop_while;
+package main.homework.july_5_11_year_23.complete_figure.loop_while;
 
 import java.util.Scanner;
 
