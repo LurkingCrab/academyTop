@@ -8,8 +8,8 @@ public class LoopForContorousOfFogures {
             for (int j = 1; j < figureSize - i; j++) {
                 System.out.print(" ");
             }
-            for (int k = 1; k < 2 * i - 1; k++) {
-                if (i == 1 || i == figureSize || k == 0 || k == 2 * i - 2) {
+            for (int k = 0; k < 2 * i - 1; k++) {
+                if ((i == 1 || i == figureSize || k == 0 || k == 2 * i - 2)) {
                     System.out.print("*");
                 } else {
                     System.out.print(" ");
@@ -47,10 +47,10 @@ public class LoopForContorousOfFogures {
 
         // Полый квадрат
         int countI = 4;
-        int countJ = 8;
+//        int countJ = 8;
         for (int i = 0; i < countI; i++) {
-            for (int j = 0; j < countJ; j++) {
-                if (i == 0 || i == countI - 1 || j == 0 || j == countJ - 1) {
+            for (int j = 0; j < countI; j++) {
+                if (i == 0 || i == countI - 1 || j == 0 || j == countI - 1) {
                     System.out.print("*");
                 } else {
                     System.out.print(" ");
