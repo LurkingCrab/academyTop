@@ -1,14 +1,34 @@
 package main;
 
 
-
 public class Main {
     public static void main(String[] args) {
-        int i = 1;
-        System.out.println(i++ - ++i);
-//        System.out.println(i);
+        int count = 7;// наклонная линия вправо
+        int i = 0;
+        while (i < count) {
+            int j = 0;
+            while (j < count - i) {
+                System.out.print(" ");
+                j++;
+            }
+            System.out.println("*");
+            i++;
+        }
+        System.out.println();
+        int i1 = 0;
+        do{
+            int j = 0;
+            do{
+                System.out.print(" ");
+                j++;
+            }while (j < count - i1);
+            System.out.println("*");
+            i1++;
+        }while (i1 < count);
+
     }
-        //        System.out.println("привте " + (12-10));
+//}
+//        System.out.println("привте "+(12-10));
 //        int count = 8;
 //        int i = 0; // квадрат 8х8 пустой
 //        while (i < count) {
@@ -131,4 +151,5 @@ public class Main {
 //            }
 //
 //        }Ъ
+
 }
