@@ -12,7 +12,7 @@ public class Task10And11 {
         int indexCurrentMax = 0;
         int minimum = arr[0];
         int maximum = arr.length-1;
-        for (int j = 0; j < arr.length; j++) {
+        for (int j = 1; j < arr.length; j++) {
             if (arr[j] < minimum) {
                 minimum = arr[j];
                 indexCurrentMin = j;
