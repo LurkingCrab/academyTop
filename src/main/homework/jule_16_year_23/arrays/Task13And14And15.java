@@ -1,6 +1,5 @@
 package main.homework.jule_16_year_23.arrays;
 
-import com.sun.source.tree.DefaultCaseLabelTree;
 
 import static main.homework.jule_16_year_23.arrays.Task1And2.arr;
 
