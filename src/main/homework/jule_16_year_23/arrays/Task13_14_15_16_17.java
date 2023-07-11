@@ -32,8 +32,11 @@ public class Task13_14_15_16_17 {
 //                System.out.println(element);
             }
         }
-        System.out.printf("Количество однозначных элементов массива - %d\nКоличество двузначных элементов массива - %d\n" +
-                "Количество трехзначных элементов массива - %d\n", numberOfSingleDigitElements, numberOfTwoDigitElements, numberOfThreeDigitElements);
+        System.out.printf("""
+                Количество однозначных элементов массива - %d
+                Количество двузначных элементов массива - %d
+                Количество трехзначных элементов массива - %d
+                """, numberOfSingleDigitElements, numberOfTwoDigitElements, numberOfThreeDigitElements);
         System.out.printf("Сумма однозначных элементов массива - %d\nСумма двухзначных элементов массива - %d\n", sumOfSingleDigitElements, sumOfTwoDigitElements);
 
     }
