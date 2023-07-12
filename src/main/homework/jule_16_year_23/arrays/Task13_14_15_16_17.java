@@ -21,11 +21,15 @@ public class Task13_14_15_16_17 {
         for (int element : arr) {
             if (element <= -1 && element >= -9 || element >= 0 && element <= 9) {
                 numberOfSingleDigitElements++;
-                sumOfSingleDigitElements+=element;
+                if (element % 2 == 0) {
+                    sumOfSingleDigitElements += element;
+                }
 //                System.out.println(element);
             } else if (element <= -10 && element >= -99 || element >= 10 && element <= 99) {
                 numberOfTwoDigitElements++;
-                sumOfTwoDigitElements += element;
+                if(element % 2 == 0) {
+                    sumOfTwoDigitElements += element;
+                }
 //                System.out.println(element);
             } else if (element <= -100 && element >= -999 || element >= 100 && element <= 999) {
                 numberOfThreeDigitElements++;
