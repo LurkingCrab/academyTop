@@ -1,7 +1,7 @@
-package main.homework.jule_18_year_23.method.arrays;
+package main.homework.jule_19_year_23.method.arrays;
 
 
-import static main.homework.jule_18_year_23.method.arrays.Task1And2.arr;
+import static main.homework.jule_19_year_23.method.arrays.Task1And2.arr;
 
 //    protected static int[] arr = new int[]{10, 2, 233, 4, 185, -435, -5, 3990, -400, 5, 5397, 523, 5, -6, 7, 8, 9, -11};
 public class Task13_14_15_16_17 {

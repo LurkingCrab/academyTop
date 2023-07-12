@@ -1,4 +1,4 @@
-package main.homework.jule_18_year_23.method.arrays;
+package main.homework.jule_19_year_23.method.arrays;
 
 // 1)Вывести количество четных
 // 2)Вывести количество нечетных

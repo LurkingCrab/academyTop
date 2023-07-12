@@ -1,6 +1,6 @@
-package main.homework.jule_18_year_23.method.arrays;
+package main.homework.jule_19_year_23.method.arrays;
 
-import static main.homework.jule_18_year_23.method.arrays.Task1And2.arr;
+import static main.homework.jule_19_year_23.method.arrays.Task1And2.arr;
 
 public class Task5And6And7 {
     //    5)Вывести сумму всех чисел
