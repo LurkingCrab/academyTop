@@ -17,5 +17,12 @@ public class RunPrograms{
         sortLargest(arr);
     }
 
+    public static void print() {
+        for (int element : RunPrograms.arr) {
+            System.out.printf("%d, ", element);
+        }
+        System.out.println();
+    }
+
 
 }

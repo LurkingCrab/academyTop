@@ -3,7 +3,9 @@ package main.practice.june_16_year_23.sorted.from_smallest_to_largest;
 
 import main.practice.june_16_year_23.sorted.ArrayPrinting;
 
-public class SmallestToLargest implements ArrayPrinting {
+import static main.practice.june_16_year_23.sorted.RunPrograms.print;
+
+public class SmallestToLargest {
     // 1)Сортировка от меньшего к большему
 
     public static void sortSmallest(int[] arr) {
@@ -19,6 +21,6 @@ public class SmallestToLargest implements ArrayPrinting {
                 }
             }
         }
-        ArrayPrinting.print();
+        print();
     }
 }
