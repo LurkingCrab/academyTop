@@ -3,8 +3,8 @@ package main.homework.june_26_year_23;
 import java.util.Arrays;
 
 /**
- * Функция которая, принимает 2 массива и возвращает новый массив. Объединяет 2 массива
- * --Нельзя все собрать в 1 массив, а потом отсортировать
+ * A function that takes 2 arrays and returns a new array. Merges 2 arrays
+ *    --You can not collect everything in 1 array, and then sort
  */
 public class UnionOfArrays {
     private static final int[] arr = new int[]{1, 4, 5, 7, 8, 12, 14, 15, 15, 15, 15, 900};
