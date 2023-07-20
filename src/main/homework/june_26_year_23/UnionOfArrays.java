@@ -16,14 +16,16 @@ public class UnionOfArrays {
     }
 
     public static int[] findNewArray(int[] arr, int[] arr2) {
-
         int[] newArray = new int[arr.length + arr2.length];
-        for (int i = 0, j = 0, z = 0; z < (newArray.length-1); ) {
-            if (arr[i] > arr2[j]) {
-                newArray[z++] = arr2[j++];
-            } else if(arr[i] < arr2[j]){
-                newArray[z++] = arr[i++];
-            }else {
+
+        for (int i = 0, j = 0, z = 0; i < arr.length || j < arr2.length; ) {
+            if (i < arr.length && j < arr2.length) {
+                if (arr[i] <= arr2[j]) {
+                    newArray[z++] = arr[i++];
+                } else {
+                    newArray[z++] = arr2[j++];
+                }
+            } else {
                 newArray[z++] = arr2[j++];
             }
         }
