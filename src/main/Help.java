@@ -1,32 +1,59 @@
 package main;
 
 
-public class Main {
-    public static void main(String[] args) {
-        int count = 7;// наклонная линия вправо
-        int i = 0;
-        while (i < count) {
-            int j = 0;
-            while (j < count - i) {
-                System.out.print(" ");
-                j++;
-            }
-            System.out.println("*");
-            i++;
-        }
-        System.out.println();
-        int i1 = 0;
-        do{
-            int j = 0;
-            do{
-                System.out.print(" ");
-                j++;
-            }while (j < count - i1);
-            System.out.println("*");
-            i1++;
-        }while (i1 < count);
+import java.util.Scanner;
 
+public class Help {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int b = 0;
+        int a = 1;
+        while (a != 0){
+            a = sc.nextInt();
+            b+=a;
+        }
+        System.out.println(b);
     }
+
+
+//        int count = 6;
+//        int i = 0;
+//        do {
+//            int j = 0;
+//            do {
+//                if (j <= i){
+//                System.out.print("*");}
+//                j++;
+//            } while (j <= i);
+//            System.out.println();
+//            i++;
+
+//        } while (i < count);
+
+//        int count = 7;// наклонная линия вправо
+//        int i = 0;
+//        while (i < count) {
+//            int j = 0;
+//            while (j < count - i) {
+//                System.out.print(" ");
+//                j++;
+//            }
+//            System.out.println("*");
+//            i++;
+//        }
+//        System.out.println();
+//        int i1 = 0;
+//        do{
+//            int j = 0;
+//            do{
+//                System.out.print(" ");
+//                j++;
+//            }while (j < count - i1);
+//            System.out.println("*");
+//            i1++;
+
+//        }while (i1 < count);
 //}
 //        System.out.println("привте "+(12-10));
 //        int count = 8;
