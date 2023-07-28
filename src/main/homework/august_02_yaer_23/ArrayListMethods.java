@@ -72,7 +72,7 @@ public class ArrayListMethods {
         checkIndex(setIndex);
         int[] result = new int[arr.length - 1];
 
-        for (var i = 0; i < arr.length - 1; i++) {
+        for (int i = 0; i < arr.length - 1; i++) {
             if (i != setIndex) {
                 int newIndex = i < setIndex ? i : i - 1;
                 result[newIndex] = arr[i];
@@ -81,13 +81,36 @@ public class ArrayListMethods {
         return result;
     }
 
+    private static boolean contains(int element){
+        boolean isCheckElement = false;
+        for (int i : cloneAnArray(arr)) {
+//            if (element == i){
+//                isCheckElement = true;
+//            } else {
+//                isCheckElement = false;
+//            }
+            isCheckElement = element == i ? true : false;
+        }
+        return  isCheckElement;
+    }
+
+    private static void clear(){
+        // Setting new empty array
+        System.out.println("\nAfter clearing Array:");
+        arr = new int[arr.length];
+        System.out.println(arr[0]);
+    }
+
     public static void main(String[] args) {
-        System.out.println(Arrays.toString((cloneAnArray(arr))));
+//        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString((cloneAnArray(arr))));
 //        System.out.println("Length: " + arr.length);
-//        System.out.println("Size: " + size());
-//        System.out.println("Get: " + get(8));
-//        System.out.println("Removed element by index: " + remove(6));
-//        System.out.println("Modified array after deletion: " + Arrays.toString(remove1ReturnArr(-1)));
+        System.out.println("Size: " + size());
+        System.out.println("Get: " + get(8));
+        System.out.println("Removed element: " + remove(5));
+        System.out.println("Modified array after deletion: " + Arrays.toString(remove1ReturnArr(9)));
+        System.out.println("Checking for the presence of an element: " + contains(10));
+        clear();
     }
 
 }
