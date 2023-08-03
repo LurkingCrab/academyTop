@@ -16,9 +16,12 @@ public class NextMethodsArrList {
 
     public static void main(String[] args) {
         System.out.println("Origins Arr: " + Arrays.toString(arr));
-//        replaceAll(2, 1111);
-//        replace(2, 111);
+        replaceAll(2, 1111);
+        replace(2, 111);
         removeAll(5);
+        reverse();
+        addInStart(111);
+        addInEnd(345678);
     }
 
     public static void replaceAll(int oldElement, int newElement) {
@@ -58,6 +61,38 @@ public class NextMethodsArrList {
         } else {
             System.out.println("Array changed");
         }
+    }
+
+    public static void reverse() {
+        int bufer;
+        for (int indexLeft = 0, indexRight = arr.length; indexRight > indexLeft; indexLeft++, indexRight--) {
+            bufer = arr[indexLeft];
+            arr[indexLeft] = arr[indexRight - 1];
+            arr[indexRight - 1] = bufer;
+            System.out.println(Arrays.toString(arr));
+        }
+    }
+
+    public static void addInStart(int element){
+        int[] newArr = new int[arr.length+1];
+        newArr[0] = element;
+        int indexArr = 0;
+        for (int index = 1; index < newArr.length; index++) {
+            newArr[index] = arr[indexArr];
+            indexArr++;
+        }
+        System.out.println(Arrays.toString(newArr));
+    }
+
+    public static void addInEnd(int element){
+        int[] newArr = new int[arr.length+1];
+        newArr[newArr.length-1] = element;
+        int indexArr = 0;
+        for (int index = 0; index < newArr.length-1; index++) {
+            newArr[index] = arr[indexArr];
+            indexArr++;
+        }
+        System.out.println(Arrays.toString(newArr));
     }
 }
 
