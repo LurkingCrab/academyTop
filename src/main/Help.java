@@ -1,21 +1,40 @@
 package main;
 
 
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class Help {
+    private static int[] arr = new int[]{1, 2, 3, 4, 5, 6, 2};
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int b = 0;
-        int a = 1;
-        while (a != 0){
-            a = sc.nextInt();
-            b+=a;
-        }
-        System.out.println(b);
+        methodRemoveAll(5);
+        System.out.println(Arrays.toString(arr));
+
+
     }
 
+    public static void methodRemoveAll(int count) { // метод вхождения удаляемого элемента
+
+        int indexOld = 0;
+        int countDoubleEl = 0;
+        for (int element : arr) {
+            if (element == count) {
+                countDoubleEl++;
+            }
+        }
+        int[] newArr = new int[arr.length - countDoubleEl];
+        for (int j : arr) {
+            if (j == count) {
+                continue;
+            } else {
+                newArr[indexOld++] = j;
+            }
+        }
+
+        arr = newArr;
+    }
+
+}
 
 //        int count = 6;
 //        int i = 0;
@@ -179,4 +198,4 @@ public class Help {
 //
 //        }Ъ
 
-}
+

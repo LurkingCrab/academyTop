@@ -12,15 +12,15 @@ import java.util.Arrays;
  */
 public class NextMethodsArrList {
 
-    private static int[] arr = new int[]{1, 2, 3, 4, 5, 6, 2};
+    private static final int[] arr = new int[]{1, 2, 3, 4, 5, 6, 2};
 
     public static void main(String[] args) {
         System.out.println("Origins Arr: " + Arrays.toString(arr));
-        replaceAll(2, 1111);
-        replace(2, 111);
-        removeAll(5);
-        reverse();
-        addInStart(111);
+//        replaceAll(2, 1111);
+//        replace(2, 111);
+//        removeAll(5);
+//        reverse();
+//        addInStart(111);
         addInEnd(345678);
     }
 
@@ -53,7 +53,7 @@ public class NextMethodsArrList {
                 }
                 System.out.println(arr[index]);
             } else {
-                flag = 1;
+            flag = 1;
             }
         }
         if (flag == 0) {
@@ -64,11 +64,11 @@ public class NextMethodsArrList {
     }
 
     public static void reverse() {
-        int bufer;
+        int buffer;
         for (int indexLeft = 0, indexRight = arr.length; indexRight > indexLeft; indexLeft++, indexRight--) {
-            bufer = arr[indexLeft];
+            buffer = arr[indexLeft];
             arr[indexLeft] = arr[indexRight - 1];
-            arr[indexRight - 1] = bufer;
+            arr[indexRight - 1] = buffer;
             System.out.println(Arrays.toString(arr));
         }
     }
