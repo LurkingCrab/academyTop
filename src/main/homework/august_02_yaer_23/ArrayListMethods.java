@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 public class ArrayListMethods {
 
-    private static int [] arr = new int[]{1, 2, 4, 5, 6, 7, 8, 9, 0};
+    private static int [] arr = new int[]{1, 2, 4, 5, 6, 7, 8, 9, 0, 10};
     //                                   0  1  2  3  4  5  6  7  8
 
     private static int size;
@@ -34,9 +34,10 @@ public class ArrayListMethods {
         }
     }
     public static int size() {
-        for (int index = 0; index < arr.length; index++) {
-            size++;
-        }
+//        for (int index = 0; index < arr.length; index++) {
+//            size++;
+//        }
+        size = arr.length;
         return size;
     }
 
