@@ -6,23 +6,49 @@ public interface GameMenu {
 
     Scanner sc = new Scanner(System.in);
 
-    static void navigateThroughTheMenu() {
-        String choice = sc.next();
-        if (choice.equals("1")) {
-            System.out.println("ИИИИИ МЫ НАЧИАНЕМ!!!");
-        } else if (choice.equals("0")) {
-            gameMenu();
-        } else {
-            System.out.println("Неверная команда, введите 1 или 0");
-            navigateThroughTheMenu();
-        }
-    }
-
-
     static void printingMessage() {
         System.out.print("Добро пожаловать в игру \"Кто хочет стать МИЛЛИОНЕРОМ\"\nПредставьтесь пожалуйста: ");
         String name = sc.nextLine();
         System.out.printf("Доброго времени %s! Рады видеть Вас в нашей игре!\n ", name);
+    }
+
+//    static void navigateThroughTheMenu() {
+//        String choice = sc.next();
+//        if (choice.equals("1")) {
+//            System.out.println("ИИИИИ МЫ НАЧИАНЕМ!!!");
+//        } else if (choice.equals("0")) {
+//            gameMenu();
+//        } else {
+//            System.out.println("Неверная команда, введите 1 или 0");
+//            navigateThroughTheMenu();
+//        }
+//    }
+
+
+    static void gameMenu() {
+        System.out.println("""
+                 ========= КТО ХОЧЕТ СТАТЬ МИЛЛИОНЕРОМ ==========
+                 1 - Начать игру
+                 2 - Правила
+                 e - Выйти из игры
+                """);
+        String num = sc.next();
+        if (num.equals("1") || num.equals("2") || num.equals("e")) {
+            switch (num) {
+                case "1" -> {
+                    System.out.println("ИИИИИ МЫ НАЧИАНЕМ!!!");
+                    GameLogic.printingTheFirstQuestion();
+                }
+                case "2" -> {
+                    printingRules();
+                }
+                case "e" -> System.exit(0);
+
+            }
+        } else {
+            System.out.println("Неверная команда, введите 1 или 0");
+            gameMenu();
+        }
     }
 
     static void printingRules() {
@@ -34,7 +60,7 @@ public interface GameMenu {
                 "Вопрос 5 - 1 000 000 руб. Использование подсказок не возможно, даже если они остались!\n" +
                 "Подсказки\n" +
                 "Участникам разрешается применить три подсказки, которые они могут использовать в любой момент викторины. КРОМЕ ПОСЛЕДНЕГО ВОПРОСА " +
-                "Каждая из подсказок может быть использована только один раз.\n" +
+                "Каждая из подсказок может быть использована только один раз. Для вызова подсказки напишите \"help\" в поле выбора ответа\n" +
                 "\n" +
                 "50/50 - исключает два неправильных ответа из множественного выбора, оставляя участнику только один правильный " +
                 "и один неправильный вариант. Это означает, что у него есть шанс 50/50. Для активации введите 50/50\n" +
@@ -46,28 +72,14 @@ public interface GameMenu {
                 "Позвоните другу - участникам разрешается сделать звонок другу  и спросить, знают ли они ответ на вопрос." +
                 "Для активации введите \"f\"\n" +
                 "Для возврата в меню нажмите 0");
-    }
+        String returnMenu = sc.next();
 
-   static void gameMenu() {
-        System.out.println("""
-                 ========= КТО ХОЧЕТ СТАТЬ МИЛЛИОНЕРОМ ==========
-                 1 - Начать игру
-                 2 - Правила
-                """);
-        String num = sc.next();
-        if (num.equals("1") || num.equals("2")){
-        switch (num) {
-            case "1" -> {
-                 System.out.println("ИИИИИ МЫ НАЧИАНЕМ!!!");
+            if (returnMenu.equals("0")) {
+                gameMenu();
+            } else {
+                System.out.println("Не верный ввод, повторите.");
             }
-            case "2" -> {
-                printingRules();
-                navigateThroughTheMenu();
-            }
-        }}else {
-            System.out.println("Неверная команда, введите 1 или 0");
-            gameMenu();
-        }
-   }
+
+    }
 
 }

@@ -2,12 +2,9 @@ package main.practice.game_millioner;
 
 import java.util.Scanner;
 
-public class GameLogic implements GameMenu {
+public class GameLogic {
 
-    private static Scanner sc = new Scanner(System.in);
-    private static String select = sc.next();
-
-    private static void printingTheFirstQuestion() {
+    static void printingTheFirstQuestion() {
         System.out.println("""
                 ВОПРОС №1
                 Из какого цветка получают шафран — одну из самых дорогих пряностей?
@@ -16,7 +13,13 @@ public class GameLogic implements GameMenu {
                 C - Crocus sativus
                 D - Arctium
                 """);
+        System.out.print("Ваш ответ: ");
+        String select = new Scanner(System.in).next().toUpperCase();
 
+        if (select.equals("HELP")) {
+            System.out.println("Выберите подсказку\n 50/50\n f - Звонок другу\n h - Помощь зала");
+            selectClue();
+        }
         switch (select) {
             case "A", "B", "D" -> {
                 System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
@@ -31,6 +34,7 @@ public class GameLogic implements GameMenu {
         }
     }
 
+
     private static void printSecondQuestion() {
         System.out.println("""
                 ВОПРОС №2
@@ -41,6 +45,14 @@ public class GameLogic implements GameMenu {
                 D - Любек
                 """);
 
+        System.out.print("Ваш ответ: ");
+        String select = new Scanner(System.in).next().toUpperCase();
+
+        if (select.equals("HELP")) {
+            System.out.println("Выберите подсказку\n 50/50\n f - Звонок другу\n h - Помощь зала");
+            selectClue();
+        }
+
         switch (select) {
             case "C", "B", "D" -> {
                 System.out.println("Ответ не верный! Правильный ответ \"A - Штеттине\" Вы проиграли!" +
@@ -48,7 +60,7 @@ public class GameLogic implements GameMenu {
                 GameMenu.gameMenu();
             }
             case "A" -> {
-                System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 200 000 у.е." +
+                System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 200 000 у.е." +
                         "Переходим к следующему вопросу.");
                 printingTheThirdQuestion();
             }
@@ -66,6 +78,14 @@ public class GameLogic implements GameMenu {
                 D - Большой Пёс
                 """);
 
+        System.out.print("Ваш ответ: ");
+        String select = new Scanner(System.in).next().toUpperCase();
+
+        if (select.equals("HELP")) {
+            System.out.println("Выберите подсказку\n 50/50\n f - Звонок другу\n h - Помощь зала");
+            selectClue();
+        }
+
         switch (select) {
             case "A", "B", "D" -> {
                 System.out.println("Ответ не верный! Правильный ответ \"C - Скорпион\" Вы проиграли!" +
@@ -73,9 +93,9 @@ public class GameLogic implements GameMenu {
                 GameMenu.gameMenu();
             }
             case "C" -> {
-                System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 400 000 у.е. Напоминаем что это не сгораемая сумма! " +
-                        "Переходим к следующему вопросу.");
-               printingTheFourthQuestion();
+                System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 400 000 у.е. Напоминаем что это не сгораемая сумма! " +
+                        "Переходим к следующему вопросу. Дальше вопросы по сложнее *,*");
+                printingTheFourthQuestion();
             }
 
         }
@@ -91,6 +111,28 @@ public class GameLogic implements GameMenu {
                 C - Солюшен
                 D - Шаллти
                 """);
+
+        System.out.print("Ваш ответ: ");
+        String select = new Scanner(System.in).next().toUpperCase();
+
+        if (select.equals("HELP")) {
+            System.out.println("Выберите подсказку\n 50/50\n f - Звонок другу\n h - Помощь зала");
+            selectClue();
+        }
+
+        switch (select) {
+            case "A", "C", "D" -> {
+                System.out.println("Ответ не верный! Правильный ответ \"B - Альбедо\" Вы проиграли!" +
+                        "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
+                GameMenu.gameMenu();
+            }
+            case "B" -> {
+                System.out.println("ОТКУДА ВЫ УЗНАЛИ!!!!! ВЫ НАВЕРНОЕ ЗАЯДЛЫЙ АНИМЭШНИК?!?!?\n Поздравляем Вы заработали " +
+                        "800 000 у.е.Переходим к следующему вопросу, последнему вопросу нашей викторины и Вашей мечте стать МИЛЛИОНЕРОМ!!!!");
+                sealFifthQuestion();
+            }
+
+        }
     }
 
     private static void sealFifthQuestion() {
@@ -102,29 +144,47 @@ public class GameLogic implements GameMenu {
                 C - Тосихико Сэки
                 D - Брайс Папенбрук
                 """);
+
+        System.out.print("Ваш ответ: ");
+        String select = new Scanner(System.in).next().toUpperCase();
+        if (select.equals("HELP")) {
+            System.out.println("Подсказки запрещены");
+            sealFifthQuestion();
+        }
+        switch (select) {
+            case "A", "C", "D" -> {
+                System.out.println("Ответ не верный! Правильный ответ \"B - Альбедо\" Вы проиграли!" +
+                        "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
+                GameMenu.gameMenu();
+            }
+            case "B" -> {
+                System.out.println("УРАААА!!! ВЫ ВЫЙГРАЛИ!!!! ВЫ МИЛЛИОНЕР!!!!" +
+                        "\nСпасибо что приняли участие в нашей игре. Ждем вас снова!\n ======= GAME OVER ======");
+                GameMenu.gameMenu();
+            }
+
+        }
     }
 
-    private static final String selectReturn = selectClue();
-
     public static String selectClue() {
-
-        if (select.equals("50/50") || select.equals("h") || select.equals("f")) {
-            switch (select) {
+        String selectHelp = new Scanner(System.in).next();
+        if (selectHelp.equals("50/50") || selectHelp.equals("h") || selectHelp.equals("f")) {
+            switch (selectHelp) {
                 case "50/50" -> fiftyFifty();
                 case "f" -> callAFriend();
                 case "h" -> hallHelp();
             }
         } else {
             System.out.println("Неверный ввод, повторите команду");
-            select = sc.next();
-//            return select;
+            selectClue();
         }
-        return select;
-//        checkingForHints();
+        return selectHelp;
     }
 
+
     protected static void checkingForHints() {
-//        selectClue();
+
+        String selectReturn = selectClue();
         int check = 0;
         while (check == 0) {
             if (selectReturn.equals("50/50")) {
@@ -142,13 +202,16 @@ public class GameLogic implements GameMenu {
 
     public static void fiftyFifty() {
         System.out.println("Сработал");
+
     }
 
     public static void callAFriend() {
         System.out.println("Сработал");
+
     }
 
     public static void hallHelp() {
         System.out.println("Сработал");
+
     }
 }
