@@ -32,27 +32,27 @@ public class Game {
     void playerActionOne() {
         int x, y;
         do {
-            System.out.println("The first player moves. Enter X and Y (1..3):");
+            System.out.println("The first player moves(X). Enter X and Y (1..3):");
             x = sc.nextInt() - 1;
             y = sc.nextInt() - 1;
         } while (!isCellValid(x, y));
-        board[y][x] = X;
+        board[x][y] = X;
     }
 
     void playerActionTwo() {
         int x, y;
         do {
-            System.out.println("Second player's move. Enter X and Y (1..3):");
+            System.out.println("Second player's move(O). Enter X and Y (1..3):");
             x = sc.nextInt() - 1;
             y = sc.nextInt() - 1;
         } while (!isCellValid(x, y));
-        board[y][x] = O;
+        board[x][y] = O;
     }
 
     boolean isCellValid(int x, int y) {
         if (x < 0 || y < 0 || x >= 3 || y >= 3)
             return false;
-        return board[y][x] == EMPTY;
+        return board[x][y] == EMPTY;
     }
 
     boolean checkWin(char dot) {
@@ -83,7 +83,7 @@ public class Game {
         while (true) {
             playerActionOne();
             if (checkWin(X)) {
-                System.out.println("YOU WIN!");
+                System.out.println("PLAYER ONE WIN!");
                 break;
             }
             if (isTableFull()) {
@@ -93,7 +93,7 @@ public class Game {
             playerActionTwo();
             playingField();
             if (checkWin(O)) {
-                System.out.println("AI WIN!");
+                System.out.println("PLAYER TWO WIN!");
                 break;
             }
             if (isTableFull()) {
