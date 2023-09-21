@@ -1,11 +1,14 @@
 package main.practice.game_millioner;
 
-import java.util.HashMap;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class GameLogic {
     static Scanner sc = new Scanner(System.in);
-    static String[] question;
+    static String[] answer;
+    static List<String> listOfAnswer;
 
     static void printingTheFirstQuestion() {
         System.out.println("""
@@ -19,15 +22,19 @@ public class GameLogic {
 
         System.out.print("Ваш ответ: ");
         String response = sc.next().toUpperCase();
+        answer = new String[]{"A", "B", "D"};
+        listOfAnswer = new ArrayList<>(List.of(answer));
         if (response.equals("HELP")) {
             System.out.println("Выберите подсказку\n 50/50\n f - Звонок другу\n h - Помощь зала");
             String clue = sc.next();
             selectClue(clue);
+            listOfAnswer.add("C");
+            System.out.println(listOfAnswer);//проверил что приходит
+
         }
-        question = new String[]{"A", "B", "C", "D"};
-        for (int count = 0; count < question.length; count++) {
+        for (int count = 0; count < listOfAnswer.size(); count++) {
             System.out.print("Ваш ответ: ");
-            if (!sc.next().toUpperCase().equals("C")) {
+            if (!sc.next().equalsIgnoreCase("C")) {
                 System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
                 GameMenu.gameMenu();
             } else {
@@ -190,7 +197,7 @@ public class GameLogic {
 
         if (selectHelp.equals("50/50") || selectHelp.equals("h") || selectHelp.equals("f")) {
             switch (selectHelp) {
-                case "50/50" -> fiftyFifty();
+                case "50/50" -> fiftyFifty(listOfAnswer);
                 case "f" -> callAFriend();
                 case "h" -> hallHelp();
             }
@@ -215,9 +222,20 @@ public class GameLogic {
         }
     }
 
-    public static void fiftyFifty() {
+    public static List<String> fiftyFifty(List<String> answ) {
         System.out.println("Сработал");
-        String[] question = new String[]{"A", "B", "C", "D"};
+        answ = listOfAnswer;
+        int check = 0;
+        while (check <=2) {
+            int randomIndex = (int) (Math.random() * 3);
+            for (int arrayIndex = 0; arrayIndex < answ.size(); arrayIndex++) {
+                if (randomIndex == arrayIndex) {
+                    answ.remove(answer[randomIndex]);
+                }
+            }
+            check++;
+        }
+        return answ;
 
     }
 
