@@ -1,14 +1,15 @@
 package main.practice.game_millioner;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class GameLogic {
     static Scanner sc = new Scanner(System.in);
-    static String[] answer;
-    static List<String> listOfAnswer;
+    static String[] answer = new String[]{"A", "B", "C", "D"};
+    static List<String> listOfAnswer = new ArrayList<>(List.of(answer));
+    static String printMassage = "Ваш ответ: ";
+    static int correctAnswer;
+    static String alternativeResponse;
 
     static void printingTheFirstQuestion() {
         System.out.println("""
@@ -20,21 +21,19 @@ public class GameLogic {
                 D - Arctium
                 """);
 
-        System.out.print("Ваш ответ: ");
-        String response = sc.next().toUpperCase();
-        answer = new String[]{"A", "B", "D"};
-        listOfAnswer = new ArrayList<>(List.of(answer));
-        if (response.equals("HELP")) {
-            System.out.println("Выберите подсказку\n 50/50\n f - Звонок другу\n h - Помощь зала");
-            String clue = sc.next();
-            selectClue(clue);
-            listOfAnswer.add("C");
-            System.out.println(listOfAnswer);//проверил что приходит
-
+        for (int index = 0; index < answer.length; index++) {
+            if (answer[index].equalsIgnoreCase("c")) {
+                correctAnswer = index;
+            }
         }
-        for (int count = 0; count < listOfAnswer.size(); count++) {
-            System.out.print("Ваш ответ: ");
-            if (!sc.next().equalsIgnoreCase("C")) {
+
+        System.out.print(printMassage);
+        String response = sc.next();
+
+        if (checkForHelpCall(response)) {
+            System.out.print(printMassage);
+            alternativeResponse = sc.next();
+            if (!alternativeResponse.equalsIgnoreCase("c")){
                 System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
                 GameMenu.gameMenu();
             } else {
@@ -43,20 +42,14 @@ public class GameLogic {
                 printSecondQuestion();
             }
         }
-
-//
-//        switch (answerOptions) {
-//            case "A", "B", "D" -> {
-//                System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
-//                GameMenu.gameMenu();
-//            }
-//            case "C" -> {
-//                System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 1000 у.е. Напоминаем что это не сгораемая сумма! " +
-//                        "Переходим к следующему вопросу.");
-//                printSecondQuestion();
-//            }
-//
-//        }
+        if (!response.equalsIgnoreCase("c")) {
+            System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
+            GameMenu.gameMenu();
+        } else {
+            System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 1000 у.е. Напоминаем что это не сгораемая сумма! " +
+                    "Переходим к следующему вопросу.");
+            printSecondQuestion();
+        }
     }
 
 
@@ -92,6 +85,7 @@ public class GameLogic {
 
         }
     }
+
 
 //    private static void printingTheThirdQuestion() {
 //        System.out.println("""
@@ -192,12 +186,11 @@ public class GameLogic {
 //
 //        }
 //    }
-
     public static String selectClue(String selectHelp) {
 
         if (selectHelp.equals("50/50") || selectHelp.equals("h") || selectHelp.equals("f")) {
             switch (selectHelp) {
-                case "50/50" -> fiftyFifty(listOfAnswer);
+                case "50/50" -> fiftyFifty(correctAnswer);
                 case "f" -> callAFriend();
                 case "h" -> hallHelp();
             }
@@ -207,6 +200,18 @@ public class GameLogic {
         }
         checkingForHints(selectHelp);
         return selectHelp;
+    }
+
+    private static boolean checkForHelpCall(String response) {
+        if (response.equalsIgnoreCase("help")) {
+            System.out.println("Выберите подсказку\n 50/50\n f - Звонок другу\n h - Помощь зала");
+            String clue = sc.next();
+            selectClue(clue);
+            System.out.println(listOfAnswer);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     protected static void checkingForHints(String selectReturn) {
@@ -222,21 +227,30 @@ public class GameLogic {
         }
     }
 
-    public static List<String> fiftyFifty(List<String> answ) {
+    public static List<String> fiftyFifty(int corAnsw) {
         System.out.println("Сработал");
-        answ = listOfAnswer;
-        int check = 0;
-        while (check <=2) {
-            int randomIndex = (int) (Math.random() * 3);
+        List<String> answ = listOfAnswer;
+        do {
+            int randomIndex = getRandomNumber();
+            int baffer = getRandomNumber();
+            if (randomIndex == baffer) {
+                continue;
+            } else if (answer[randomIndex].equalsIgnoreCase(answer[corAnsw])) {
+                continue;
+            }
             for (int arrayIndex = 0; arrayIndex < answ.size(); arrayIndex++) {
                 if (randomIndex == arrayIndex) {
-                    answ.remove(answer[randomIndex]);
+                    answ.remove(answer[arrayIndex]);
+                    break;
                 }
             }
-            check++;
-        }
+        } while (answ.size() != 2);
         return answ;
 
+    }
+
+    private static int getRandomNumber() {
+        return (int) (Math.random() * 5);
     }
 
     public static void callAFriend() {
@@ -248,4 +262,6 @@ public class GameLogic {
         System.out.println("Сработал");
 
     }
+
 }
+
