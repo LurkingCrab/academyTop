@@ -10,8 +10,9 @@ public class GameLogic {
     static String printMassage = "Ваш ответ: ";
     static int correctAnswer;
     static String alternativeResponse;
+    static boolean checkOfUse = true;
 
-    static void printingTheFirstQuestion() {
+    static void printingTheFirstQuestion() throws InterruptedException {
         System.out.println("""
                 ВОПРОС №1
                 Из какого цветка получают шафран — одну из самых дорогих пряностей?
@@ -26,34 +27,47 @@ public class GameLogic {
                 correctAnswer = index;
             }
         }
+//        List<String> questionOne = listOfAnswer;
 
         System.out.print(printMassage);
         String response = sc.next();
 
         if (checkForHelpCall(response)) {
-            System.out.print(printMassage);
-            alternativeResponse = sc.next();
-            if (!alternativeResponse.equalsIgnoreCase("c")){
-                System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
-                GameMenu.gameMenu();
-            } else {
-                System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 1000 у.е. Напоминаем что это не сгораемая сумма! " +
-                        "Переходим к следующему вопросу.");
-                printSecondQuestion();
+//            System.out.println("\n" + questionOne);
+            boolean flagForWhile = false;
+            while (!flagForWhile) {
+                System.out.print(printMassage);
+                alternativeResponse = sc.next();
+                if (alternativeResponse.equalsIgnoreCase(response)) {
+                    checkForHelpCall(response);
+                } else if (!alternativeResponse.equalsIgnoreCase("c")) {
+                    System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
+                    System.exit(0);
+                } else {
+                    System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 1000 у.е. Напоминаем что это не сгораемая сумма! " +
+                            "Переходим к следующему вопросу.");
+                    flagForWhile = true;
+                }
             }
+            listOfAnswer = new ArrayList<>(List.of(answer));
+            printSecondQuestion();
         }
+
+
         if (!response.equalsIgnoreCase("c")) {
             System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
-            GameMenu.gameMenu();
+            System.exit(0);
         } else {
             System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 1000 у.е. Напоминаем что это не сгораемая сумма! " +
                     "Переходим к следующему вопросу.");
+            listOfAnswer = new ArrayList<>(List.of(answer));
             printSecondQuestion();
         }
+
     }
 
 
-    private static void printSecondQuestion() {
+    private static void printSecondQuestion() throws InterruptedException {
         System.out.println("""
                 ВОПРОС №2
                 В каком немецком городе родилась будущая императрица России Екатерина II?
@@ -63,143 +77,198 @@ public class GameLogic {
                 D - Любек
                 """);
 
-        System.out.print("Ваш ответ: ");
-        String select = sc.next().toUpperCase();
-
-        if (select.equals("HELP")) {
-            System.out.println("Выберите подсказку\n 50/50\n f - Звонок другу\n h - Помощь зала");
-
+        for (int index = 0; index < answer.length; index++) {
+            if (answer[index].equalsIgnoreCase("a")) {
+                correctAnswer = index;
+            }
         }
 
-        switch (select) {
-            case "C", "B", "D" -> {
-                System.out.println("Ответ не верный! Правильный ответ \"A - Штеттине\" Вы проиграли!" +
-                        "Ваш выйгрыш составил 1000 у.е.");
-                GameMenu.gameMenu();
-            }
-            case "A" -> {
-                System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 200 000 у.е." +
-                        "Переходим к следующему вопросу.");
-//                printingTheThirdQuestion();
-            }
+        System.out.print(printMassage);
+        String response = sc.next();
 
+        if (checkForHelpCall(response)) {
+            boolean flagForWhile = false;
+            while (!flagForWhile) {
+                System.out.print(printMassage);
+                alternativeResponse = sc.next();
+                if (!alternativeResponse.equalsIgnoreCase("a")) {
+                    System.out.println("Ответ не верный! Правильный ответ \\\"A - Штеттине\\\" Вы проиграли!\" +\n" +
+                            "\"Ваш выйгрыш составил 1000 у.е.");
+                    System.exit(0);
+                } else {
+                    System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 200 000 у.е." +
+                            "Переходим к следующему вопросу.");
+                    flagForWhile = true;
+                }
+            }
+            listOfAnswer = new ArrayList<>(List.of(answer));
+            printSecondQuestion();
+        }
+        if (!response.equalsIgnoreCase("a")) {
+            System.out.println("Ответ не верный! Правильный ответ \\\"A - Штеттине\\\" Вы проиграли!\" +\n" +
+                    "\"Ваш выйгрыш составил 1000 у.е.");
+            System.exit(0);
+        } else {
+            System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 200 000 у.е." +
+                    "Переходим к следующему вопросу.");
+            listOfAnswer = new ArrayList<>(List.of(answer));
+            printingTheThirdQuestion();
         }
     }
 
 
-//    private static void printingTheThirdQuestion() {
-//        System.out.println("""
-//                ВОПРОС №3
-//                В какое созвездие входит звезда Шаула, название которой переводится как «поднятый хвост»?
-//                A - Андромеда
-//                B - Тельца
-//                C - Скорпион
-//                D - Большой Пёс
-//                """);
-//
-//        System.out.print("Ваш ответ: ");
-//        String select = sc.next().toUpperCase();
-//
-//        if (select.equals("HELP")) {
-//            System.out.println("Выберите подсказку\n 50/50\n f - Звонок другу\n h - Помощь зала");
-//            selectClue();
-//        }
-//
-//        switch (select) {
-//            case "A", "B", "D" -> {
-//                System.out.println("Ответ не верный! Правильный ответ \"C - Скорпион\" Вы проиграли!" +
-//                        "Ваш выйгрыш составил 1000 у.е.");
-//                GameMenu.gameMenu();
-//            }
-//            case "C" -> {
-//                System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 400 000 у.е. Напоминаем что это не сгораемая сумма! " +
-//                        "Переходим к следующему вопросу. Дальше вопросы по сложнее *,*");
-//                printingTheFourthQuestion();
-//            }
-//
-//        }
-//
-//    }
+    private static void printingTheThirdQuestion() throws InterruptedException {
+        System.out.println("""
+                ВОПРОС №3
+                В какое созвездие входит звезда Шаула, название которой переводится как «поднятый хвост»?
+                A - Андромеда
+                B - Тельца
+                C - Скорпион
+                D - Большой Пёс
+                """);
 
-//    private static void printingTheFourthQuestion() {
-//        System.out.println("""
-//                ВОПРОС №4
-//                Как звали персонажа беспамятно влюбленную и желающую наследников от Айнц Оул Гоуна, в анимэ "Overlord"?
-//                A - Лакюс Альвейн Дейл Айндра
-//                B - Альбедо
-//                C - Солюшен
-//                D - Шаллти
-//                """);
-//
-//        System.out.print("Ваш ответ: ");
-//        String select = sc.next().toUpperCase();
-//
-//        if (select.equals("HELP")) {
-//            System.out.println("Выберите подсказку\n 50/50\n f - Звонок другу\n h - Помощь зала");
-//            selectClue();
-//        }
-//
-//        switch (select) {
-//            case "A", "C", "D" -> {
-//                System.out.println("Ответ не верный! Правильный ответ \"B - Альбедо\" Вы проиграли!" +
-//                        "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
-//                GameMenu.gameMenu();
-//            }
-//            case "B" -> {
-//                System.out.println("ОТКУДА ВЫ УЗНАЛИ!!!!! ВЫ НАВЕРНОЕ ЗАЯДЛЫЙ АНИМЭШНИК?!?!?\n Поздравляем Вы заработали " +
-//                        "800 000 у.е.Переходим к следующему вопросу, последнему вопросу нашей викторины и Вашей мечте стать МИЛЛИОНЕРОМ!!!!");
-//                sealFifthQuestion();
-//            }
-//
-//        }
-//    }
 
-//    private static void sealFifthQuestion() {
-//        System.out.println("""
-//                ВОПРОС №5
-//                Кто озвучивал в оригинале роль Иноске Хашибира в "Demon Slayer"?
-//                A - Ёсицугу Мацуока
-//                B - Хиро Симоно
-//                C - Тосихико Сэки
-//                D - Брайс Папенбрук
-//                """);
-//
-//        System.out.print("Ваш ответ: ");
-//        String select = sc.next().toUpperCase();
-//        if (select.equals("HELP")) {
-//            System.out.println("Подсказки запрещены");
-//            sealFifthQuestion();
-//        }
-//        switch (select) {
-//            case "A", "C", "D" -> {
-//                System.out.println("Ответ не верный! Правильный ответ \"B - Альбедо\" Вы проиграли!" +
-//                        "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
-//                GameMenu.gameMenu();
-//            }
-//            case "B" -> {
-//                System.out.println("""
-//                        УРАААА!!! ВЫ ВЫЙГРАЛИ!!!! ВЫ МИЛЛИОНЕР!!!!
-//                        Спасибо что приняли участие в нашей игре. Ждем вас снова!
-//                         ======= GAME OVER ======""");
-//                GameMenu.gameMenu();
-//            }
-//
-//        }
-//    }
-    public static String selectClue(String selectHelp) {
-
-        if (selectHelp.equals("50/50") || selectHelp.equals("h") || selectHelp.equals("f")) {
-            switch (selectHelp) {
-                case "50/50" -> fiftyFifty(correctAnswer);
-                case "f" -> callAFriend();
-                case "h" -> hallHelp();
+        for (int index = 0; index < answer.length; index++) {
+            if (answer[index].equalsIgnoreCase("a")) {
+                correctAnswer = index;
             }
-        } else {
-            System.out.println("Неверный ввод, повторите команду");
-            selectClue(selectHelp);
         }
-        checkingForHints(selectHelp);
-        return selectHelp;
+
+        System.out.print(printMassage);
+        String response = sc.next();
+
+        if (checkForHelpCall(response)) {
+            boolean flagForWhile = false;
+            while (!flagForWhile) {
+                System.out.print(printMassage);
+                alternativeResponse = sc.next();
+                if (!alternativeResponse.equalsIgnoreCase("c")) {
+                    System.out.println("Ответ не верный! Правильный ответ \"C - Скорпион\" Вы проиграли!" +
+                            "Ваш выйгрыш составил 1000 у.е.");
+                    System.exit(0);
+                } else {
+                    System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 400 000 у.е. Напоминаем что это не сгораемая сумма! " +
+                            "Переходим к следующему вопросу. Дальше вопросы по сложнее *,*");
+                    flagForWhile = true;
+                }
+            }
+            listOfAnswer = new ArrayList<>(List.of(answer));
+            printingTheFirstQuestion();
+        }
+        if (!response.equalsIgnoreCase("c")) {
+            System.out.println("Ответ не верный! Правильный ответ \"C - Скорпион\" Вы проиграли!" +
+                    "Ваш выйгрыш составил 1000 у.е.");
+            System.exit(0);
+        } else {
+            System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 400 000 у.е. Напоминаем что это не сгораемая сумма! " +
+                    "Переходим к следующему вопросу. Дальше вопросы по сложнее *,*");
+            listOfAnswer = new ArrayList<>(List.of(answer));
+            printingTheFourthQuestion();
+        }
+    }
+
+    private static void printingTheFourthQuestion() {
+        System.out.println("""
+                ВОПРОС №4
+                Как звали персонажа беспамятно влюбленную и желающую наследников от Айнц Оул Гоуна, в анимэ "Overlord"?
+                A - Лакюс Альвейн Дейл Айндра
+                B - Альбедо
+                C - Солюшен
+                D - Шаллти
+                """);
+
+        for (int index = 0; index < answer.length; index++) {
+            if (answer[index].equalsIgnoreCase("a")) {
+                correctAnswer = index;
+            }
+        }
+
+        System.out.print(printMassage);
+        String response = sc.next();
+
+        if (checkForHelpCall(response)) {
+            boolean flagForWhile = false;
+            while (!flagForWhile) {
+                System.out.print(printMassage);
+                alternativeResponse = sc.next();
+                if (!alternativeResponse.equalsIgnoreCase("b")) {
+                    System.out.println("Ответ не верный! Правильный ответ \"B - Альбедо\" Вы проиграли!" +
+                            "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
+                    System.exit(0);
+                } else {
+                    System.out.println("ОТКУДА ВЫ УЗНАЛИ!!!!! ВЫ НАВЕРНОЕ ЗАЯДЛЫЙ АНИМЭШНИК?!?!?\n Поздравляем Вы заработали " +
+                            "800 000 у.е.Переходим к следующему вопросу, последнему вопросу нашей викторины и Вашей мечте стать МИЛЛИОНЕРОМ!!!!");
+                    flagForWhile = true;
+                }
+            }
+            listOfAnswer = new ArrayList<>(List.of(answer));
+            sealFifthQuestion();
+        }
+        if (!response.equalsIgnoreCase("b")) {
+            System.out.println("Ответ не верный! Правильный ответ \"C - Скорпион\" Вы проиграли!" +
+                    "Ваш выйгрыш составил 1000 у.е.");
+            System.exit(0);
+        } else {
+            System.out.println("ОТКУДА ВЫ УЗНАЛИ!!!!! ВЫ НАВЕРНОЕ ЗАЯДЛЫЙ АНИМЭШНИК?!?!?\n Поздравляем Вы заработали " +
+                    "800 000 у.е.Переходим к следующему вопросу, последнему вопросу нашей викторины и Вашей мечте стать МИЛЛИОНЕРОМ!!!!");
+            listOfAnswer = new ArrayList<>(List.of(answer));
+            sealFifthQuestion();
+        }
+
+
+    }
+
+
+    private static void sealFifthQuestion() {
+        System.out.println("""
+                ВОПРОС №5
+                Кто озвучивал в оригинале роль Иноске Хашибира в "Demon Slayer"?
+                A - Ёсицугу Мацуока
+                B - Хиро Симоно
+                C - Тосихико Сэки
+                D - Брайс Папенбрук
+                """);
+
+        for (int index = 0; index < answer.length; index++) {
+            if (answer[index].equalsIgnoreCase("a")) {
+                correctAnswer = index;
+            }
+        }
+
+        System.out.print(printMassage);
+        String response = sc.next();
+
+        if (checkForHelpCall(response)) {
+            boolean flagForWhile = false;
+            while (!flagForWhile) {
+                System.out.print(printMassage);
+                alternativeResponse = sc.next();
+                if (!alternativeResponse.equalsIgnoreCase("a")) {
+                    System.out.println("Ответ не верный! Правильный ответ \"A - Ёсицугу Мацуока\" Вы проиграли!" +
+                            "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
+                    System.exit(0);
+                } else {
+                    System.out.println("""
+                        УРАААА!!! ВЫ ВЫЙГРАЛИ!!!! ВЫ МИЛЛИОНЕР!!!!
+                        Спасибо что приняли участие в нашей игре. Ждем вас снова!
+                         ======= GAME OVER ======""");
+                    flagForWhile = true;
+                }
+            }
+            System.exit(0);
+        }
+        if (!response.equalsIgnoreCase("a")) {
+            System.out.println("Ответ не верный! Правильный ответ \"A - Ёсицугу Мацуока\" Вы проиграли!" +
+                    "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
+            System.exit(0);
+        } else {
+            System.out.println("""
+                        УРАААА!!! ВЫ ВЫЙГРАЛИ!!!! ВЫ МИЛЛИОНЕР!!!!
+                        Спасибо что приняли участие в нашей игре. Ждем вас снова!
+                         ======= GAME OVER ======""");
+
+            System.exit(0);
+        }
     }
 
     private static boolean checkForHelpCall(String response) {
@@ -207,27 +276,41 @@ public class GameLogic {
             System.out.println("Выберите подсказку\n 50/50\n f - Звонок другу\n h - Помощь зала");
             String clue = sc.next();
             selectClue(clue);
-            System.out.println(listOfAnswer);
             return true;
         } else {
             return false;
         }
     }
 
-    protected static void checkingForHints(String selectReturn) {
-//   Исправить, не работает. 3 раза выводит сообщение об использовании. Создать массив или бул который будет исключать повторы
-        int check = 0;
-        while (check <= 3) {
-            switch (selectReturn) {
-                case "50/50", "h", "f" -> {
-                    System.out.println("Подсказка использована, вы не можете ее больше использовать");
-                    check++;
+    public static void selectClue(String selectHelp) {
+        if (selectHelp.equals("50/50") || selectHelp.equals("h") || selectHelp.equals("f")) {
+            if (checkingForHints(selectHelp)) {
+                switch (selectHelp) {
+                    case "50/50" -> fiftyFifty(correctAnswer);
+                    case "f" -> callAFriend();
+                    case "h" -> hallHelp();
                 }
+            } else {
+                System.out.println("потрачено");
             }
+        } else {
+            System.out.println("Неверный ввод, повторите команду");
+            selectClue(selectHelp);
         }
     }
 
-    public static List<String> fiftyFifty(int corAnsw) {
+    protected static boolean checkingForHints(String selectReturn) {
+        if (selectReturn.equalsIgnoreCase("50/50") & checkOfUse) {
+            return true;
+        } else if (selectReturn.equalsIgnoreCase("h") & checkOfUse) {
+            return true;
+        } else if (selectReturn.equalsIgnoreCase("f") & checkOfUse) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void fiftyFifty(int corAnsw) {
         System.out.println("Сработал");
         List<String> answ = listOfAnswer;
         do {
@@ -245,22 +328,52 @@ public class GameLogic {
                 }
             }
         } while (answ.size() != 2);
-        return answ;
+        System.out.println(listOfAnswer);
+        checkOfUse = false;
 
-    }
-
-    private static int getRandomNumber() {
-        return (int) (Math.random() * 5);
     }
 
     public static void callAFriend() {
-        System.out.println("Сработал");
+        System.out.println("Звоним другу...");
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException ex) {
+            System.out.println("error Thread");
+        }
+        int randomIndex = getRandomNumber();
+        for (int arrayIndex = 0; arrayIndex < answer.length; arrayIndex++) {
+            if (randomIndex == arrayIndex) {
+                answer[randomIndex] = answer[arrayIndex];
+                System.out.printf("Я думаю это ответ - %s", answer[randomIndex]);
+                break;
+            }
+        }
+        checkOfUse = false;
 
     }
 
     public static void hallHelp() {
-        System.out.println("Сработал");
+        System.out.println("Уважаемые знатоки просим вас проголосовать!");
+        try {
+            Thread.sleep(1900);
+        } catch (InterruptedException ex) {
+            System.out.println("error Thread");
+        }
+        String[] audienceResponses = new String[]{"A", "B", "C", "D"};
+        for (String audienceRespons : audienceResponses) {
+            int randomPercent = getARandomPercentage();
+            System.out.printf("%s - %d %%\n", audienceRespons, randomPercent);
+        }
+        checkOfUse = false;
 
+    }
+
+    private static int getRandomNumber() {
+        return (int) (Math.random() * 4);
+    }
+
+    private static int getARandomPercentage() {
+        return (int) (Math.random() * 100);
     }
 
 }
