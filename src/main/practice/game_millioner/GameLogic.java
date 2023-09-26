@@ -29,14 +29,14 @@ public class GameLogic {
         }
 //        List<String> questionOne = listOfAnswer;
 
-        System.out.print(printMassage);
+        System.out.println(printMassage);
         String response = sc.next();
 
         if (checkForHelpCall(response)) {
 //            System.out.println("\n" + questionOne);
             boolean flagForWhile = false;
             while (!flagForWhile) {
-                System.out.print(printMassage);
+                System.out.println(printMassage);
                 alternativeResponse = sc.next();
                 if (alternativeResponse.equalsIgnoreCase(response)) {
                     checkForHelpCall(response);
@@ -89,7 +89,7 @@ public class GameLogic {
         if (checkForHelpCall(response)) {
             boolean flagForWhile = false;
             while (!flagForWhile) {
-                System.out.print(printMassage);
+                System.out.println(printMassage);
                 alternativeResponse = sc.next();
                 if (!alternativeResponse.equalsIgnoreCase("a")) {
                     System.out.println("Ответ не верный! Правильный ответ \\\"A - Штеттине\\\" Вы проиграли!\" +\n" +
@@ -102,7 +102,7 @@ public class GameLogic {
                 }
             }
             listOfAnswer = new ArrayList<>(List.of(answer));
-            printSecondQuestion();
+            printingTheThirdQuestion();
         }
         if (!response.equalsIgnoreCase("a")) {
             System.out.println("Ответ не верный! Правильный ответ \\\"A - Штеттине\\\" Вы проиграли!\" +\n" +
@@ -134,13 +134,13 @@ public class GameLogic {
             }
         }
 
-        System.out.print(printMassage);
+        System.out.println(printMassage);
         String response = sc.next();
 
         if (checkForHelpCall(response)) {
             boolean flagForWhile = false;
             while (!flagForWhile) {
-                System.out.print(printMassage);
+                System.out.println(printMassage);
                 alternativeResponse = sc.next();
                 if (!alternativeResponse.equalsIgnoreCase("c")) {
                     System.out.println("Ответ не верный! Правильный ответ \"C - Скорпион\" Вы проиграли!" +
@@ -189,7 +189,7 @@ public class GameLogic {
         if (checkForHelpCall(response)) {
             boolean flagForWhile = false;
             while (!flagForWhile) {
-                System.out.print(printMassage);
+                System.out.println(printMassage);
                 alternativeResponse = sc.next();
                 if (!alternativeResponse.equalsIgnoreCase("b")) {
                     System.out.println("Ответ не верный! Правильный ответ \"B - Альбедо\" Вы проиграли!" +
@@ -239,23 +239,7 @@ public class GameLogic {
         String response = sc.next();
 
         if (checkForHelpCall(response)) {
-            boolean flagForWhile = false;
-            while (!flagForWhile) {
-                System.out.print(printMassage);
-                alternativeResponse = sc.next();
-                if (!alternativeResponse.equalsIgnoreCase("a")) {
-                    System.out.println("Ответ не верный! Правильный ответ \"A - Ёсицугу Мацуока\" Вы проиграли!" +
-                            "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
-                    System.exit(0);
-                } else {
-                    System.out.println("""
-                        УРАААА!!! ВЫ ВЫЙГРАЛИ!!!! ВЫ МИЛЛИОНЕР!!!!
-                        Спасибо что приняли участие в нашей игре. Ждем вас снова!
-                         ======= GAME OVER ======""");
-                    flagForWhile = true;
-                }
-            }
-            System.exit(0);
+            System.out.println("В данном вопросе подсказки не доступны");
         }
         if (!response.equalsIgnoreCase("a")) {
             System.out.println("Ответ не верный! Правильный ответ \"A - Ёсицугу Мацуока\" Вы проиграли!" +
@@ -283,19 +267,23 @@ public class GameLogic {
     }
 
     public static void selectClue(String selectHelp) {
-        if (selectHelp.equals("50/50") || selectHelp.equals("h") || selectHelp.equals("f")) {
-            if (checkingForHints(selectHelp)) {
-                switch (selectHelp) {
-                    case "50/50" -> fiftyFifty(correctAnswer);
-                    case "f" -> callAFriend();
-                    case "h" -> hallHelp();
+        boolean flag = true;
+        while (flag) {
+            if (selectHelp.equals("50/50") || selectHelp.equals("h") || selectHelp.equals("f")) {
+                if (checkingForHints(selectHelp)) {
+                    switch (selectHelp) {
+                        case "50/50" -> fiftyFifty(correctAnswer);
+                        case "f" -> callAFriend();
+                        case "h" -> hallHelp();
+                    }
+                } else {
+                    System.out.println("потрачено");
                 }
+                flag = false;
             } else {
-                System.out.println("потрачено");
+                System.out.println("Неверный ввод, повторите команду");
+                selectHelp = sc.next();
             }
-        } else {
-            System.out.println("Неверный ввод, повторите команду");
-            selectClue(selectHelp);
         }
     }
 
