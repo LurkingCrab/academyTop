@@ -7,15 +7,15 @@ public class GameLogic {
     static Scanner sc = new Scanner(System.in);
     static String[] answer = new String[]{"A", "B", "C", "D"};
     static List<String> listOfAnswer = new ArrayList<>(List.of(answer));
-    static String printMassage = "Ваш ответ: ";
+    static String printMassage = "Р’Р°С€ РѕС‚РІРµС‚: ";
     static int correctAnswer;
     static String alternativeResponse;
     static boolean checkOfUse = true;
 
     static void printingTheFirstQuestion() throws InterruptedException {
         System.out.println("""
-                ВОПРОС №1
-                Из какого цветка получают шафран — одну из самых дорогих пряностей?
+                Р’РћРџР РћРЎ в„–1
+                РР· РєР°РєРѕРіРѕ С†РІРµС‚РєР° РїРѕР»СѓС‡Р°СЋС‚ С€Р°С„СЂР°РЅ вЂ” РѕРґРЅСѓ РёР· СЃР°РјС‹С… РґРѕСЂРѕРіРёС… РїСЂСЏРЅРѕСЃС‚РµР№?
                 A - Matricaria
                 B - Centaurea
                 C - Crocus sativus
@@ -41,15 +41,15 @@ public class GameLogic {
                         if (alternativeResponse.equalsIgnoreCase(response)) {
                             checkForHelpCall(response);
                         } else if (!alternativeResponse.equalsIgnoreCase("c")) {
-                            System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
+                            System.out.println("РћС‚РІРµС‚ РЅРµ РІРµСЂРЅС‹Р№! РџСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ \"РЎ - Crocus sativus\" Р’С‹ РїСЂРѕРёРіСЂР°Р»Рё!");
                             System.exit(0);
                         } else {
-                            System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 1000 у.е. Напоминаем что это не сгораемая сумма! " +
-                                    "Переходим к следующему вопросу.");
+                            System.out.println("РРёРёРё СЌС‚Рѕ Р’Р•Р РќР«Р™ РћРўР’Р•Рў! РџРѕР·РґСЂР°РІР»СЏРµРј Р’С‹ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё РїРµСЂРІСѓСЋ 1000 Сѓ.Рµ. РќР°РїРѕРјРёРЅР°РµРј С‡С‚Рѕ СЌС‚Рѕ РЅРµ СЃРіРѕСЂР°РµРјР°СЏ СЃСѓРјРјР°! " +
+                                    "РџРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РІРѕРїСЂРѕСЃСѓ.");
                             flagForWhile = true;
                         }
                     } else {
-                        System.out.println("Не верный ввод, попробуйте еще раз");
+                        System.out.println("РќРµ РІРµСЂРЅС‹Р№ РІРІРѕРґ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·");
                         alternativeResponse = sc.next();
                     }
                 }
@@ -62,16 +62,16 @@ public class GameLogic {
         while (!flagForWhile) {
             if (response.equalsIgnoreCase("a") || response.equalsIgnoreCase("b") || response.equalsIgnoreCase("c")) {
                 if (!response.equalsIgnoreCase("c")) {
-                    System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
+                    System.out.println("РћС‚РІРµС‚ РЅРµ РІРµСЂРЅС‹Р№! РџСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ \"РЎ - Crocus sativus\" Р’С‹ РїСЂРѕРёРіСЂР°Р»Рё!");
                     System.exit(0);
                 } else {
-                    System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 1000 у.е. Напоминаем что это не сгораемая сумма! " +
-                            "Переходим к следующему вопросу.");
+                    System.out.println("РРёРёРё СЌС‚Рѕ Р’Р•Р РќР«Р™ РћРўР’Р•Рў! РџРѕР·РґСЂР°РІР»СЏРµРј Р’С‹ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё РїРµСЂРІСѓСЋ 1000 Сѓ.Рµ. РќР°РїРѕРјРёРЅР°РµРј С‡С‚Рѕ СЌС‚Рѕ РЅРµ СЃРіРѕСЂР°РµРјР°СЏ СЃСѓРјРјР°! " +
+                            "РџРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РІРѕРїСЂРѕСЃСѓ.");
                     printSecondQuestion();
                     flagForWhile = true;
                 }
             } else {
-                System.out.println("Не верный ввод, попробуйте еще раз");
+                System.out.println("РќРµ РІРµСЂРЅС‹Р№ РІРІРѕРґ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·");
                 response = sc.next();
             }
             listOfAnswer = new ArrayList<>(List.of(answer));
@@ -81,12 +81,12 @@ public class GameLogic {
 
     private static void printSecondQuestion() throws InterruptedException {
         System.out.println("""
-                ВОПРОС №2
-                В каком немецком городе родилась будущая императрица России Екатерина II?
-                A - Штеттине
-                B - Цербсте
-                C - Кобленц
-                D - Любек
+                Р’РћРџР РћРЎ в„–2
+                Р’ РєР°РєРѕРј РЅРµРјРµС†РєРѕРј РіРѕСЂРѕРґРµ СЂРѕРґРёР»Р°СЃСЊ Р±СѓРґСѓС‰Р°СЏ РёРјРїРµСЂР°С‚СЂРёС†Р° Р РѕСЃСЃРёРё Р•РєР°С‚РµСЂРёРЅР° II?
+                A - РЁС‚РµС‚С‚РёРЅРµ
+                B - Р¦РµСЂР±СЃС‚Рµ
+                C - РљРѕР±Р»РµРЅС†
+                D - Р›СЋР±РµРє
                 """);
 
         for (int index = 0; index < answer.length; index++) {
@@ -106,16 +106,16 @@ public class GameLogic {
                 while (!flagForWhile) {
                     if (alternativeResponse.equalsIgnoreCase("a") || alternativeResponse.equalsIgnoreCase("b") || alternativeResponse.equalsIgnoreCase("c")) {
                         if (!alternativeResponse.equalsIgnoreCase("a")) {
-                            System.out.println("Ответ не верный! Правильный ответ \\\"A - Штеттине\\\" Вы проиграли!\" +\n" +
-                                    "\"Ваш выйгрыш составил 1000 у.е.");
+                            System.out.println("РћС‚РІРµС‚ РЅРµ РІРµСЂРЅС‹Р№! РџСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ \\\"A - РЁС‚РµС‚С‚РёРЅРµ\\\" Р’С‹ РїСЂРѕРёРіСЂР°Р»Рё!\" +\n" +
+                                    "\"Р’Р°С€ РІС‹Р№РіСЂС‹С€ СЃРѕСЃС‚Р°РІРёР» 1000 Сѓ.Рµ.");
                             System.exit(0);
                         } else {
-                            System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 200 000 у.е." +
-                                    "Переходим к следующему вопросу.");
+                            System.out.println("РРёРёРё СЌС‚Рѕ Р’Р•Р РќР«Р™ РћРўР’Р•Рў! РџРѕР·РґСЂР°РІР»СЏРµРј Р’С‹ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё 200 000 Сѓ.Рµ." +
+                                    "РџРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РІРѕРїСЂРѕСЃСѓ.");
                             flagForWhile = true;
                         }
                     } else {
-                        System.out.println("Не верный ввод, попробуйте еще раз");
+                        System.out.println("РќРµ РІРµСЂРЅС‹Р№ РІРІРѕРґ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·");
                         alternativeResponse = sc.next();
                     }
                 }
@@ -127,17 +127,17 @@ public class GameLogic {
         while (!flagForWhile) {
             if (response.equalsIgnoreCase("a") || response.equalsIgnoreCase("b") || response.equalsIgnoreCase("c")) {
                 if (!response.equalsIgnoreCase("a")) {
-                    System.out.println("Ответ не верный! Правильный ответ \\\"A - Штеттине\\\" Вы проиграли!\" +\n" +
-                            "\"Ваш выйгрыш составил 1000 у.е.");
+                    System.out.println("РћС‚РІРµС‚ РЅРµ РІРµСЂРЅС‹Р№! РџСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ \\\"A - РЁС‚РµС‚С‚РёРЅРµ\\\" Р’С‹ РїСЂРѕРёРіСЂР°Р»Рё!\" +\n" +
+                            "\"Р’Р°С€ РІС‹Р№РіСЂС‹С€ СЃРѕСЃС‚Р°РІРёР» 1000 Сѓ.Рµ.");
                     System.exit(0);
                 } else {
-                    System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 200 000 у.е." +
-                            "Переходим к следующему вопросу.");
+                    System.out.println("РРёРёРё СЌС‚Рѕ Р’Р•Р РќР«Р™ РћРўР’Р•Рў! РџРѕР·РґСЂР°РІР»СЏРµРј Р’С‹ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё 200 000 Сѓ.Рµ." +
+                            "РџРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РІРѕРїСЂРѕСЃСѓ.");
                     flagForWhile = true;
                     printingTheThirdQuestion();
                 }
             } else {
-                System.out.println("Не верный ввод, попробуйте еще раз");
+                System.out.println("РќРµ РІРµСЂРЅС‹Р№ РІРІРѕРґ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·");
                 response = sc.next();
             }
             listOfAnswer = new ArrayList<>(List.of(answer));
@@ -147,12 +147,12 @@ public class GameLogic {
 
     private static void printingTheThirdQuestion() throws InterruptedException {
         System.out.println("""
-                ВОПРОС №3
-                В какое созвездие входит звезда Шаула, название которой переводится как «поднятый хвост»?
-                A - Андромеда
-                B - Тельца
-                C - Скорпион
-                D - Большой Пёс
+                Р’РћРџР РћРЎ в„–3
+                Р’ РєР°РєРѕРµ СЃРѕР·РІРµР·РґРёРµ РІС…РѕРґРёС‚ Р·РІРµР·РґР° РЁР°СѓР»Р°, РЅР°Р·РІР°РЅРёРµ РєРѕС‚РѕСЂРѕР№ РїРµСЂРµРІРѕРґРёС‚СЃСЏ РєР°Рє В«РїРѕРґРЅСЏС‚С‹Р№ С…РІРѕСЃС‚В»?
+                A - РђРЅРґСЂРѕРјРµРґР°
+                B - РўРµР»СЊС†Р°
+                C - РЎРєРѕСЂРїРёРѕРЅ
+                D - Р‘РѕР»СЊС€РѕР№ РџС‘СЃ
                 """);
 
 
@@ -173,16 +173,16 @@ public class GameLogic {
                     alternativeResponse = sc.next();
                     if (alternativeResponse.equalsIgnoreCase("a") || alternativeResponse.equalsIgnoreCase("b") || alternativeResponse.equalsIgnoreCase("c")) {
                         if (!alternativeResponse.equalsIgnoreCase("c")) {
-                            System.out.println("Ответ не верный! Правильный ответ \"C - Скорпион\" Вы проиграли!" +
-                                    "Ваш выйгрыш составил 1000 у.е.");
+                            System.out.println("РћС‚РІРµС‚ РЅРµ РІРµСЂРЅС‹Р№! РџСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ \"C - РЎРєРѕСЂРїРёРѕРЅ\" Р’С‹ РїСЂРѕРёРіСЂР°Р»Рё!" +
+                                    "Р’Р°С€ РІС‹Р№РіСЂС‹С€ СЃРѕСЃС‚Р°РІРёР» 1000 Сѓ.Рµ.");
                             System.exit(0);
                         } else {
-                            System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 400 000 у.е. Напоминаем что это не сгораемая сумма! " +
-                                    "Переходим к следующему вопросу. Дальше вопросы по сложнее *,*");
+                            System.out.println("РРёРёРё СЌС‚Рѕ Р’Р•Р РќР«Р™ РћРўР’Р•Рў! РџРѕР·РґСЂР°РІР»СЏРµРј Р’С‹ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё 400 000 Сѓ.Рµ. РќР°РїРѕРјРёРЅР°РµРј С‡С‚Рѕ СЌС‚Рѕ РЅРµ СЃРіРѕСЂР°РµРјР°СЏ СЃСѓРјРјР°! " +
+                                    "РџРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РІРѕРїСЂРѕСЃСѓ. Р”Р°Р»СЊС€Рµ РІРѕРїСЂРѕСЃС‹ РїРѕ СЃР»РѕР¶РЅРµРµ *,*");
                             flagForWhile = true;
                         }
                     } else {
-                        System.out.println("Не верный ввод, попробуйте еще раз");
+                        System.out.println("РќРµ РІРµСЂРЅС‹Р№ РІРІРѕРґ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·");
                         alternativeResponse = sc.next();
                     }
                 }
@@ -194,17 +194,17 @@ public class GameLogic {
         while (!flagForWhile) {
             if (response.equalsIgnoreCase("a") || response.equalsIgnoreCase("b") || response.equalsIgnoreCase("c")) {
                 if (!response.equalsIgnoreCase("c")) {
-                    System.out.println("Ответ не верный! Правильный ответ \"C - Скорпион\" Вы проиграли!" +
-                            "Ваш выйгрыш составил 1000 у.е.");
+                    System.out.println("РћС‚РІРµС‚ РЅРµ РІРµСЂРЅС‹Р№! РџСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ \"C - РЎРєРѕСЂРїРёРѕРЅ\" Р’С‹ РїСЂРѕРёРіСЂР°Р»Рё!" +
+                            "Р’Р°С€ РІС‹Р№РіСЂС‹С€ СЃРѕСЃС‚Р°РІРёР» 1000 Сѓ.Рµ.");
                     System.exit(0);
                 } else {
-                    System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 400 000 у.е. Напоминаем что это не сгораемая сумма! " +
-                            "Переходим к следующему вопросу. Дальше вопросы по сложнее *,*");
+                    System.out.println("РРёРёРё СЌС‚Рѕ Р’Р•Р РќР«Р™ РћРўР’Р•Рў! РџРѕР·РґСЂР°РІР»СЏРµРј Р’С‹ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё 400 000 Сѓ.Рµ. РќР°РїРѕРјРёРЅР°РµРј С‡С‚Рѕ СЌС‚Рѕ РЅРµ СЃРіРѕСЂР°РµРјР°СЏ СЃСѓРјРјР°! " +
+                            "РџРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РІРѕРїСЂРѕСЃСѓ. Р”Р°Р»СЊС€Рµ РІРѕРїСЂРѕСЃС‹ РїРѕ СЃР»РѕР¶РЅРµРµ *,*");
                     flagForWhile = true;
                     printingTheFourthQuestion();
                 }
             } else {
-                System.out.println("Не верный ввод, попробуйте еще раз");
+                System.out.println("РќРµ РІРµСЂРЅС‹Р№ РІРІРѕРґ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·");
                 response = sc.next();
             }
             listOfAnswer = new ArrayList<>(List.of(answer));
@@ -213,12 +213,12 @@ public class GameLogic {
 
     private static void printingTheFourthQuestion() {
         System.out.println("""
-                ВОПРОС №4
-                Как звали персонажа беспамятно влюбленную и желающую наследников от Айнц Оул Гоуна, в анимэ "Overlord"?
-                A - Лакюс Альвейн Дейл Айндра
-                B - Альбедо
-                C - Солюшен
-                D - Шаллти
+                Р’РћРџР РћРЎ в„–4
+                РљР°Рє Р·РІР°Р»Рё РїРµСЂСЃРѕРЅР°Р¶Р° Р±РµСЃРїР°РјСЏС‚РЅРѕ РІР»СЋР±Р»РµРЅРЅСѓСЋ Рё Р¶РµР»Р°СЋС‰СѓСЋ РЅР°СЃР»РµРґРЅРёРєРѕРІ РѕС‚ РђР№РЅС† РћСѓР» Р“РѕСѓРЅР°, РІ Р°РЅРёРјСЌ "Overlord"?
+                A - Р›Р°РєСЋСЃ РђР»СЊРІРµР№РЅ Р”РµР№Р» РђР№РЅРґСЂР°
+                B - РђР»СЊР±РµРґРѕ
+                C - РЎРѕР»СЋС€РµРЅ
+                D - РЁР°Р»Р»С‚Рё
                 """);
 
         for (int index = 0; index < answer.length; index++) {
@@ -238,16 +238,16 @@ public class GameLogic {
                 while (!flagForWhile) {
                     if (alternativeResponse.equalsIgnoreCase("a") || alternativeResponse.equalsIgnoreCase("b") || alternativeResponse.equalsIgnoreCase("c")) {
                         if (!alternativeResponse.equalsIgnoreCase("b")) {
-                            System.out.println("Ответ не верный! Правильный ответ \"B - Альбедо\" Вы проиграли!" +
-                                    "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
+                            System.out.println("РћС‚РІРµС‚ РЅРµ РІРµСЂРЅС‹Р№! РџСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ \"B - РђР»СЊР±РµРґРѕ\" Р’С‹ РїСЂРѕРёРіСЂР°Р»Рё!" +
+                                    "\nР’Р°С€ РІС‹Р№РіСЂС‹С€ СЃРѕСЃС‚Р°РІРёР» 400 000 Сѓ.Рµ. Р СЌС‚Рѕ РІРїРµС‡Р°С‚Р»СЏСЋС‰РёР№ СЂРµР·СѓР»СЊС‚Р°С‚! РЈРІРёРґРёРјСЃСЏ РІ СЃР»РµРґСѓСЋС‰РµР№ РёРіСЂРµ!");
                             System.exit(0);
                         } else {
-                            System.out.println("ОТКУДА ВЫ УЗНАЛИ!!!!! ВЫ НАВЕРНОЕ ЗАЯДЛЫЙ АНИМЭШНИК?!?!?\n Поздравляем Вы заработали " +
-                                    "800 000 у.е.Переходим к следующему вопросу, последнему вопросу нашей викторины и Вашей мечте стать МИЛЛИОНЕРОМ!!!!");
+                            System.out.println("РћРўРљРЈР”Рђ Р’Р« РЈР—РќРђР›Р!!!!! Р’Р« РќРђР’Р•Р РќРћР• Р—РђРЇР”Р›Р«Р™ РђРќРРњР­РЁРќРРљ?!?!?\n РџРѕР·РґСЂР°РІР»СЏРµРј Р’С‹ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё " +
+                                    "800 000 Сѓ.Рµ.РџРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РІРѕРїСЂРѕСЃСѓ, РїРѕСЃР»РµРґРЅРµРјСѓ РІРѕРїСЂРѕСЃСѓ РЅР°С€РµР№ РІРёРєС‚РѕСЂРёРЅС‹ Рё Р’Р°С€РµР№ РјРµС‡С‚Рµ СЃС‚Р°С‚СЊ РњРР›Р›РРћРќР•Р РћРњ!!!!");
                             flagForWhile = true;
                         }
                     } else {
-                        System.out.println("Не верный ввод, попробуйте еще раз");
+                        System.out.println("РќРµ РІРµСЂРЅС‹Р№ РІРІРѕРґ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·");
                         alternativeResponse = sc.next();
                     }
                 }
@@ -259,17 +259,17 @@ public class GameLogic {
         while (!flagForWhile) {
             if (response.equalsIgnoreCase("a") || response.equalsIgnoreCase("b") || response.equalsIgnoreCase("c")) {
                 if (!response.equalsIgnoreCase("b")) {
-                    System.out.println("Ответ не верный! Правильный ответ \"B - Альбедо\" Вы проиграли!" +
-                            "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
+                    System.out.println("РћС‚РІРµС‚ РЅРµ РІРµСЂРЅС‹Р№! РџСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ \"B - РђР»СЊР±РµРґРѕ\" Р’С‹ РїСЂРѕРёРіСЂР°Р»Рё!" +
+                            "\nР’Р°С€ РІС‹Р№РіСЂС‹С€ СЃРѕСЃС‚Р°РІРёР» 400 000 Сѓ.Рµ. Р СЌС‚Рѕ РІРїРµС‡Р°С‚Р»СЏСЋС‰РёР№ СЂРµР·СѓР»СЊС‚Р°С‚! РЈРІРёРґРёРјСЃСЏ РІ СЃР»РµРґСѓСЋС‰РµР№ РёРіСЂРµ!");
                     System.exit(0);
                 } else {
-                    System.out.println("ОТКУДА ВЫ УЗНАЛИ!!!!! ВЫ НАВЕРНОЕ ЗАЯДЛЫЙ АНИМЭШНИК?!?!?\n Поздравляем Вы заработали " +
-                            "800 000 у.е.Переходим к следующему вопросу, последнему вопросу нашей викторины и Вашей мечте стать МИЛЛИОНЕРОМ!!!!");
+                    System.out.println("РћРўРљРЈР”Рђ Р’Р« РЈР—РќРђР›Р!!!!! Р’Р« РќРђР’Р•Р РќРћР• Р—РђРЇР”Р›Р«Р™ РђРќРРњР­РЁРќРРљ?!?!?\n РџРѕР·РґСЂР°РІР»СЏРµРј Р’С‹ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё " +
+                            "800 000 Сѓ.Рµ.РџРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РІРѕРїСЂРѕСЃСѓ, РїРѕСЃР»РµРґРЅРµРјСѓ РІРѕРїСЂРѕСЃСѓ РЅР°С€РµР№ РІРёРєС‚РѕСЂРёРЅС‹ Рё Р’Р°С€РµР№ РјРµС‡С‚Рµ СЃС‚Р°С‚СЊ РњРР›Р›РРћРќР•Р РћРњ!!!!");
                     flagForWhile = true;
                     sealFifthQuestion();
                 }
             } else {
-                System.out.println("Не верный ввод, попробуйте еще раз");
+                System.out.println("РќРµ РІРµСЂРЅС‹Р№ РІРІРѕРґ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·");
                 response = sc.next();
             }
             listOfAnswer = new ArrayList<>(List.of(answer));
@@ -281,12 +281,12 @@ public class GameLogic {
 
     private static void sealFifthQuestion() {
         System.out.println("""
-                ВОПРОС №5
-                Кто озвучивал в оригинале роль Иноске Хашибира в "Demon Slayer"?
-                A - Ёсицугу Мацуока
-                B - Хиро Симоно
-                C - Тосихико Сэки
-                D - Брайс Папенбрук
+                Р’РћРџР РћРЎ в„–5
+                РљС‚Рѕ РѕР·РІСѓС‡РёРІР°Р» РІ РѕСЂРёРіРёРЅР°Р»Рµ СЂРѕР»СЊ РРЅРѕСЃРєРµ РҐР°С€РёР±РёСЂР° РІ "Demon Slayer"?
+                A - РЃСЃРёС†СѓРіСѓ РњР°С†СѓРѕРєР°
+                B - РҐРёСЂРѕ РЎРёРјРѕРЅРѕ
+                C - РўРѕСЃРёС…РёРєРѕ РЎСЌРєРё
+                D - Р‘СЂР°Р№СЃ РџР°РїРµРЅР±СЂСѓРє
                 """);
 
         for (int index = 0; index < answer.length; index++) {
@@ -300,7 +300,7 @@ public class GameLogic {
         boolean flagForWhile = false;
 
         if (response.equalsIgnoreCase("help")) {
-            System.out.println("В данном вопросе подсказки не доступны");
+            System.out.println("Р’ РґР°РЅРЅРѕРј РІРѕРїСЂРѕСЃРµ РїРѕРґСЃРєР°Р·РєРё РЅРµ РґРѕСЃС‚СѓРїРЅС‹");
             System.out.print(printMassage);
             response = sc.next();
         }
@@ -308,19 +308,19 @@ public class GameLogic {
         while (!flagForWhile){
             if (response.equalsIgnoreCase("a") || response.equalsIgnoreCase("b") || response.equalsIgnoreCase("c")){
                 if (!response.equalsIgnoreCase("a")) {
-                    System.out.println("Ответ не верный! Правильный ответ \"A - Ёсицугу Мацуока\" Вы проиграли!" +
-                            "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
+                    System.out.println("РћС‚РІРµС‚ РЅРµ РІРµСЂРЅС‹Р№! РџСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ \"A - РЃСЃРёС†СѓРіСѓ РњР°С†СѓРѕРєР°\" Р’С‹ РїСЂРѕРёРіСЂР°Р»Рё!" +
+                            "\nР’Р°С€ РІС‹Р№РіСЂС‹С€ СЃРѕСЃС‚Р°РІРёР» 400 000 Сѓ.Рµ. Р СЌС‚Рѕ РІРїРµС‡Р°С‚Р»СЏСЋС‰РёР№ СЂРµР·СѓР»СЊС‚Р°С‚! РЈРІРёРґРёРјСЃСЏ РІ СЃР»РµРґСѓСЋС‰РµР№ РёРіСЂРµ!");
                     System.exit(0);
                 } else {
                     System.out.println("""
-                    УРАААА!!! ВЫ ВЫЙГРАЛИ!!!! ВЫ МИЛЛИОНЕР!!!!
-                    Спасибо что приняли участие в нашей игре. Ждем вас снова!
+                    РЈР РђРђРђРђ!!! Р’Р« Р’Р«Р™Р“Р РђР›Р!!!! Р’Р« РњРР›Р›РРћРќР•Р !!!!
+                    РЎРїР°СЃРёР±Рѕ С‡С‚Рѕ РїСЂРёРЅСЏР»Рё СѓС‡Р°СЃС‚РёРµ РІ РЅР°С€РµР№ РёРіСЂРµ. Р–РґРµРј РІР°СЃ СЃРЅРѕРІР°!
                      ======= GAME OVER ======""");
                     flagForWhile = true;
                     System.exit(0);
                 }
             }else {
-                System.out.println("Не верный ввод, попробуйте еще раз");
+                System.out.println("РќРµ РІРµСЂРЅС‹Р№ РІРІРѕРґ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·");
                 response = sc.next();
             }
         }
@@ -328,7 +328,7 @@ public class GameLogic {
 
     private static boolean checkForHelpCall(String response) {
         if (response.equalsIgnoreCase("help")) {
-            System.out.println("Выберите подсказку\n 50/50\n f - Звонок другу\n h - Помощь зала");
+            System.out.println("Р’С‹Р±РµСЂРёС‚Рµ РїРѕРґСЃРєР°Р·РєСѓ\n 50/50\n f - Р—РІРѕРЅРѕРє РґСЂСѓРіСѓ\n h - РџРѕРјРѕС‰СЊ Р·Р°Р»Р°");
             String clue = sc.next();
             selectClue(clue);
             return true;
@@ -348,11 +348,11 @@ public class GameLogic {
                         case "h" -> hallHelp();
                     }
                 } else {
-                    System.out.println("потрачено");
+                    System.out.println("РїРѕС‚СЂР°С‡РµРЅРѕ");
                 }
                 flag = false;
             } else {
-                System.out.println("Неверный ввод, повторите команду");
+                System.out.println("РќРµРІРµСЂРЅС‹Р№ РІРІРѕРґ, РїРѕРІС‚РѕСЂРёС‚Рµ РєРѕРјР°РЅРґСѓ");
                 selectHelp = sc.next();
             }
         }
@@ -370,7 +370,7 @@ public class GameLogic {
     }
 
     public static void fiftyFifty(int corAnsw) {
-        System.out.println("Сработал");
+        System.out.println("РЎСЂР°Р±РѕС‚Р°Р»");
         List<String> answ = listOfAnswer;
         do {
             int randomIndex = getRandomNumber();
@@ -393,7 +393,7 @@ public class GameLogic {
     }
 
     public static void callAFriend() {
-        System.out.println("Звоним другу...");
+        System.out.println("Р—РІРѕРЅРёРј РґСЂСѓРіСѓ...");
         try {
             Thread.sleep(1500);
         } catch (InterruptedException ex) {
@@ -403,7 +403,7 @@ public class GameLogic {
         for (int arrayIndex = 0; arrayIndex < answer.length; arrayIndex++) {
             if (randomIndex == arrayIndex) {
                 answer[randomIndex] = answer[arrayIndex];
-                System.out.printf("Я думаю это ответ - %s\n", answer[randomIndex]);
+                System.out.printf("РЇ РґСѓРјР°СЋ СЌС‚Рѕ РѕС‚РІРµС‚ - %s\n", answer[randomIndex]);
                 break;
             }
         }
@@ -412,7 +412,7 @@ public class GameLogic {
     }
 
     public static void hallHelp() {
-        System.out.println("Уважаемые знатоки просим вас проголосовать!");
+        System.out.println("РЈРІР°Р¶Р°РµРјС‹Рµ Р·РЅР°С‚РѕРєРё РїСЂРѕСЃРёРј РІР°СЃ РїСЂРѕРіРѕР»РѕСЃРѕРІР°С‚СЊ!");
         try {
             Thread.sleep(1900);
         } catch (InterruptedException ex) {
