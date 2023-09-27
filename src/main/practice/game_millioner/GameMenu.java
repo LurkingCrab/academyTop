@@ -56,13 +56,16 @@ public class GameMenu {
 
                 Позвоните другу - участникам разрешается сделать звонок другу  и спросить, знают ли они ответ на вопрос.Для активации введите "f"
                 Для возврата в меню нажмите 0""");
-        String returnMenu = sc.next();
+        boolean flag = true;
+        while (flag) {
+            String returnMenu = sc.next();
             if (returnMenu.equals("0")) {
+                flag = false;
                 gameMenu();
             } else {
                 System.out.println("Не верный ввод, повторите.");
             }
-
+        }
     }
 
 }

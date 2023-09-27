@@ -27,45 +27,57 @@ public class GameLogic {
                 correctAnswer = index;
             }
         }
-//        List<String> questionOne = listOfAnswer;
 
         System.out.println(printMassage);
         String response = sc.next();
 
+        boolean flagForWhile = false;
         if (checkForHelpCall(response)) {
-//            System.out.println("\n" + questionOne);
-            boolean flagForWhile = false;
             while (!flagForWhile) {
                 System.out.println(printMassage);
                 alternativeResponse = sc.next();
-                if (alternativeResponse.equalsIgnoreCase(response)) {
-                    checkForHelpCall(response);
-                } else if (!alternativeResponse.equalsIgnoreCase("c")) {
-                    System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
-                    System.exit(0);
-                } else {
-                    System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 1000 у.е. Напоминаем что это не сгораемая сумма! " +
-                            "Переходим к следующему вопросу.");
-                    flagForWhile = true;
+                while (!flagForWhile) {
+                    if (alternativeResponse.equalsIgnoreCase("a") || alternativeResponse.equalsIgnoreCase("b") || alternativeResponse.equalsIgnoreCase("c")) {
+                        if (alternativeResponse.equalsIgnoreCase(response)) {
+                            checkForHelpCall(response);
+                        } else if (!alternativeResponse.equalsIgnoreCase("c")) {
+                            System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
+                            System.exit(0);
+                        } else {
+                            System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 1000 у.е. Напоминаем что это не сгораемая сумма! " +
+                                    "Переходим к следующему вопросу.");
+                            flagForWhile = true;
+                        }
+                    } else {
+                        System.out.println("Не верный ввод, попробуйте еще раз");
+                        alternativeResponse = sc.next();
+                    }
                 }
+
             }
             listOfAnswer = new ArrayList<>(List.of(answer));
             printSecondQuestion();
         }
 
-
-        if (!response.equalsIgnoreCase("c")) {
-            System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
-            System.exit(0);
-        } else {
-            System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 1000 у.е. Напоминаем что это не сгораемая сумма! " +
-                    "Переходим к следующему вопросу.");
+        while (!flagForWhile) {
+            if (response.equalsIgnoreCase("a") || response.equalsIgnoreCase("b") || response.equalsIgnoreCase("c")) {
+                if (!response.equalsIgnoreCase("c")) {
+                    System.out.println("Ответ не верный! Правильный ответ \"С - Crocus sativus\" Вы проиграли!");
+                    System.exit(0);
+                } else {
+                    System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали первую 1000 у.е. Напоминаем что это не сгораемая сумма! " +
+                            "Переходим к следующему вопросу.");
+                    printSecondQuestion();
+                    flagForWhile = true;
+                }
+            } else {
+                System.out.println("Не верный ввод, попробуйте еще раз");
+                response = sc.next();
+            }
             listOfAnswer = new ArrayList<>(List.of(answer));
-            printSecondQuestion();
         }
 
     }
-
 
     private static void printSecondQuestion() throws InterruptedException {
         System.out.println("""
@@ -85,13 +97,36 @@ public class GameLogic {
 
         System.out.print(printMassage);
         String response = sc.next();
+        boolean flagForWhile = false;
 
         if (checkForHelpCall(response)) {
-            boolean flagForWhile = false;
             while (!flagForWhile) {
                 System.out.println(printMassage);
                 alternativeResponse = sc.next();
-                if (!alternativeResponse.equalsIgnoreCase("a")) {
+                while (!flagForWhile) {
+                    if (alternativeResponse.equalsIgnoreCase("a") || alternativeResponse.equalsIgnoreCase("b") || alternativeResponse.equalsIgnoreCase("c")) {
+                        if (!alternativeResponse.equalsIgnoreCase("a")) {
+                            System.out.println("Ответ не верный! Правильный ответ \\\"A - Штеттине\\\" Вы проиграли!\" +\n" +
+                                    "\"Ваш выйгрыш составил 1000 у.е.");
+                            System.exit(0);
+                        } else {
+                            System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 200 000 у.е." +
+                                    "Переходим к следующему вопросу.");
+                            flagForWhile = true;
+                        }
+                    } else {
+                        System.out.println("Не верный ввод, попробуйте еще раз");
+                        alternativeResponse = sc.next();
+                    }
+                }
+            }
+            listOfAnswer = new ArrayList<>(List.of(answer));
+            printingTheThirdQuestion();
+        }
+
+        while (!flagForWhile) {
+            if (response.equalsIgnoreCase("a") || response.equalsIgnoreCase("b") || response.equalsIgnoreCase("c")) {
+                if (!response.equalsIgnoreCase("a")) {
                     System.out.println("Ответ не верный! Правильный ответ \\\"A - Штеттине\\\" Вы проиграли!\" +\n" +
                             "\"Ваш выйгрыш составил 1000 у.е.");
                     System.exit(0);
@@ -99,20 +134,13 @@ public class GameLogic {
                     System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 200 000 у.е." +
                             "Переходим к следующему вопросу.");
                     flagForWhile = true;
+                    printingTheThirdQuestion();
                 }
+            } else {
+                System.out.println("Не верный ввод, попробуйте еще раз");
+                response = sc.next();
             }
             listOfAnswer = new ArrayList<>(List.of(answer));
-            printingTheThirdQuestion();
-        }
-        if (!response.equalsIgnoreCase("a")) {
-            System.out.println("Ответ не верный! Правильный ответ \\\"A - Штеттине\\\" Вы проиграли!\" +\n" +
-                    "\"Ваш выйгрыш составил 1000 у.е.");
-            System.exit(0);
-        } else {
-            System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 200 000 у.е." +
-                    "Переходим к следующему вопросу.");
-            listOfAnswer = new ArrayList<>(List.of(answer));
-            printingTheThirdQuestion();
         }
     }
 
@@ -136,13 +164,36 @@ public class GameLogic {
 
         System.out.println(printMassage);
         String response = sc.next();
+        boolean flagForWhile = false;
 
         if (checkForHelpCall(response)) {
-            boolean flagForWhile = false;
             while (!flagForWhile) {
-                System.out.println(printMassage);
-                alternativeResponse = sc.next();
-                if (!alternativeResponse.equalsIgnoreCase("c")) {
+                while (!flagForWhile) {
+                    System.out.println(printMassage);
+                    alternativeResponse = sc.next();
+                    if (alternativeResponse.equalsIgnoreCase("a") || alternativeResponse.equalsIgnoreCase("b") || alternativeResponse.equalsIgnoreCase("c")) {
+                        if (!alternativeResponse.equalsIgnoreCase("c")) {
+                            System.out.println("Ответ не верный! Правильный ответ \"C - Скорпион\" Вы проиграли!" +
+                                    "Ваш выйгрыш составил 1000 у.е.");
+                            System.exit(0);
+                        } else {
+                            System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 400 000 у.е. Напоминаем что это не сгораемая сумма! " +
+                                    "Переходим к следующему вопросу. Дальше вопросы по сложнее *,*");
+                            flagForWhile = true;
+                        }
+                    } else {
+                        System.out.println("Не верный ввод, попробуйте еще раз");
+                        alternativeResponse = sc.next();
+                    }
+                }
+            }
+            listOfAnswer = new ArrayList<>(List.of(answer));
+            printingTheFirstQuestion();
+        }
+
+        while (!flagForWhile) {
+            if (response.equalsIgnoreCase("a") || response.equalsIgnoreCase("b") || response.equalsIgnoreCase("c")) {
+                if (!response.equalsIgnoreCase("c")) {
                     System.out.println("Ответ не верный! Правильный ответ \"C - Скорпион\" Вы проиграли!" +
                             "Ваш выйгрыш составил 1000 у.е.");
                     System.exit(0);
@@ -150,20 +201,13 @@ public class GameLogic {
                     System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 400 000 у.е. Напоминаем что это не сгораемая сумма! " +
                             "Переходим к следующему вопросу. Дальше вопросы по сложнее *,*");
                     flagForWhile = true;
+                    printingTheFourthQuestion();
                 }
+            } else {
+                System.out.println("Не верный ввод, попробуйте еще раз");
+                response = sc.next();
             }
             listOfAnswer = new ArrayList<>(List.of(answer));
-            printingTheFirstQuestion();
-        }
-        if (!response.equalsIgnoreCase("c")) {
-            System.out.println("Ответ не верный! Правильный ответ \"C - Скорпион\" Вы проиграли!" +
-                    "Ваш выйгрыш составил 1000 у.е.");
-            System.exit(0);
-        } else {
-            System.out.println("Ииии это ВЕРНЫЙ ОТВЕТ! Поздравляем Вы заработали 400 000 у.е. Напоминаем что это не сгораемая сумма! " +
-                    "Переходим к следующему вопросу. Дальше вопросы по сложнее *,*");
-            listOfAnswer = new ArrayList<>(List.of(answer));
-            printingTheFourthQuestion();
         }
     }
 
@@ -185,13 +229,36 @@ public class GameLogic {
 
         System.out.print(printMassage);
         String response = sc.next();
+        boolean flagForWhile = false;
 
         if (checkForHelpCall(response)) {
-            boolean flagForWhile = false;
             while (!flagForWhile) {
                 System.out.println(printMassage);
                 alternativeResponse = sc.next();
-                if (!alternativeResponse.equalsIgnoreCase("b")) {
+                while (!flagForWhile) {
+                    if (alternativeResponse.equalsIgnoreCase("a") || alternativeResponse.equalsIgnoreCase("b") || alternativeResponse.equalsIgnoreCase("c")) {
+                        if (!alternativeResponse.equalsIgnoreCase("b")) {
+                            System.out.println("Ответ не верный! Правильный ответ \"B - Альбедо\" Вы проиграли!" +
+                                    "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
+                            System.exit(0);
+                        } else {
+                            System.out.println("ОТКУДА ВЫ УЗНАЛИ!!!!! ВЫ НАВЕРНОЕ ЗАЯДЛЫЙ АНИМЭШНИК?!?!?\n Поздравляем Вы заработали " +
+                                    "800 000 у.е.Переходим к следующему вопросу, последнему вопросу нашей викторины и Вашей мечте стать МИЛЛИОНЕРОМ!!!!");
+                            flagForWhile = true;
+                        }
+                    } else {
+                        System.out.println("Не верный ввод, попробуйте еще раз");
+                        alternativeResponse = sc.next();
+                    }
+                }
+            }
+            listOfAnswer = new ArrayList<>(List.of(answer));
+            sealFifthQuestion();
+        }
+
+        while (!flagForWhile) {
+            if (response.equalsIgnoreCase("a") || response.equalsIgnoreCase("b") || response.equalsIgnoreCase("c")) {
+                if (!response.equalsIgnoreCase("b")) {
                     System.out.println("Ответ не верный! Правильный ответ \"B - Альбедо\" Вы проиграли!" +
                             "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
                     System.exit(0);
@@ -199,20 +266,13 @@ public class GameLogic {
                     System.out.println("ОТКУДА ВЫ УЗНАЛИ!!!!! ВЫ НАВЕРНОЕ ЗАЯДЛЫЙ АНИМЭШНИК?!?!?\n Поздравляем Вы заработали " +
                             "800 000 у.е.Переходим к следующему вопросу, последнему вопросу нашей викторины и Вашей мечте стать МИЛЛИОНЕРОМ!!!!");
                     flagForWhile = true;
+                    sealFifthQuestion();
                 }
+            } else {
+                System.out.println("Не верный ввод, попробуйте еще раз");
+                response = sc.next();
             }
             listOfAnswer = new ArrayList<>(List.of(answer));
-            sealFifthQuestion();
-        }
-        if (!response.equalsIgnoreCase("b")) {
-            System.out.println("Ответ не верный! Правильный ответ \"C - Скорпион\" Вы проиграли!" +
-                    "Ваш выйгрыш составил 1000 у.е.");
-            System.exit(0);
-        } else {
-            System.out.println("ОТКУДА ВЫ УЗНАЛИ!!!!! ВЫ НАВЕРНОЕ ЗАЯДЛЫЙ АНИМЭШНИК?!?!?\n Поздравляем Вы заработали " +
-                    "800 000 у.е.Переходим к следующему вопросу, последнему вопросу нашей викторины и Вашей мечте стать МИЛЛИОНЕРОМ!!!!");
-            listOfAnswer = new ArrayList<>(List.of(answer));
-            sealFifthQuestion();
         }
 
 
@@ -237,21 +297,32 @@ public class GameLogic {
 
         System.out.print(printMassage);
         String response = sc.next();
+        boolean flagForWhile = false;
 
-        if (checkForHelpCall(response)) {
+        if (response.equalsIgnoreCase("help")) {
             System.out.println("В данном вопросе подсказки не доступны");
+            System.out.print(printMassage);
+            response = sc.next();
         }
-        if (!response.equalsIgnoreCase("a")) {
-            System.out.println("Ответ не верный! Правильный ответ \"A - Ёсицугу Мацуока\" Вы проиграли!" +
-                    "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
-            System.exit(0);
-        } else {
-            System.out.println("""
-                        УРАААА!!! ВЫ ВЫЙГРАЛИ!!!! ВЫ МИЛЛИОНЕР!!!!
-                        Спасибо что приняли участие в нашей игре. Ждем вас снова!
-                         ======= GAME OVER ======""");
 
-            System.exit(0);
+        while (!flagForWhile){
+            if (response.equalsIgnoreCase("a") || response.equalsIgnoreCase("b") || response.equalsIgnoreCase("c")){
+                if (!response.equalsIgnoreCase("a")) {
+                    System.out.println("Ответ не верный! Правильный ответ \"A - Ёсицугу Мацуока\" Вы проиграли!" +
+                            "\nВаш выйгрыш составил 400 000 у.е. И это впечатляющий результат! Увидимся в следующей игре!");
+                    System.exit(0);
+                } else {
+                    System.out.println("""
+                    УРАААА!!! ВЫ ВЫЙГРАЛИ!!!! ВЫ МИЛЛИОНЕР!!!!
+                    Спасибо что приняли участие в нашей игре. Ждем вас снова!
+                     ======= GAME OVER ======""");
+                    flagForWhile = true;
+                    System.exit(0);
+                }
+            }else {
+                System.out.println("Не верный ввод, попробуйте еще раз");
+                response = sc.next();
+            }
         }
     }
 
@@ -332,7 +403,7 @@ public class GameLogic {
         for (int arrayIndex = 0; arrayIndex < answer.length; arrayIndex++) {
             if (randomIndex == arrayIndex) {
                 answer[randomIndex] = answer[arrayIndex];
-                System.out.printf("Я думаю это ответ - %s", answer[randomIndex]);
+                System.out.printf("Я думаю это ответ - %s\n", answer[randomIndex]);
                 break;
             }
         }
@@ -349,8 +420,7 @@ public class GameLogic {
         }
         String[] audienceResponses = new String[]{"A", "B", "C", "D"};
         for (String audienceRespons : audienceResponses) {
-            int randomPercent = getARandomPercentage();
-            System.out.printf("%s - %d %%\n", audienceRespons, randomPercent);
+            System.out.printf("%s - %d %%\n", audienceRespons, getARandomPercentage());
         }
         checkOfUse = false;
 
